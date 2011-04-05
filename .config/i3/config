@@ -1,0 +1,93 @@
+# font:
+font -*-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-*
+
+# settings:
+new_container tabbed
+new_window bb
+floating_modifier Mod1
+ipc-socket ~/.config/i3/ipc.sock
+client.background #282626
+
+# assignments:
+assign Ranger 2
+assign QTFM 2
+assign Chromium 3
+assign Namoroka 3
+assign Minefield 3
+assign WeeChat 5
+assign MCabber 4
+assign Pianobar 6
+assign Radio 6
+assign Transmission 9
+
+# autostart:
+exec urxvtd -q -o -f &
+
+# quick binds:
+bindsym Mod4+r exec dmenu_run -fn '-*-terminus-medium-r-normal-*-12-*-*-*-*-*-iso10646-*' &
+bindsym Mod4+e exec urxvtc &
+bindsym Mod4+w exec ~/.scripts/cmdprog &
+
+# netbook keys:
+bindsym Control+Mod4+l exec ~/.scripts/ilock &
+bindsym Control+Mod1+Delete exec sudo reboot &
+bindsym Control+Mod1+BackSpace exec urxvtc -e htop &
+bindsym XF86Sleep exec sudo pm-suspend &
+bindsym XF86PowerOff exec sudo poweroff &
+bindsym XF86AudioMute exec amixer set Speaker toggle &
+bindsym XF86AudioLowerVolume exec amixer set Speaker 5- &
+bindsym XF86AudioRaiseVolume exec amixer set Speaker 5+ unmute &
+
+# wm binds:
+bindsym Mod1+f f
+bindsym Mod1+h s
+bindsym Mod1+w T
+bindsym Mod1+e d
+bindsym Mod1+Shift+space t
+bindsym Mod1+t focus ft
+bindsym Mod1+Left h
+bindsym Mod1+Down j
+bindsym Mod1+Up k
+bindsym Mod1+Right l
+bindsym Mod4+Left wch
+bindsym Mod4+Down wcj
+bindsym Mod4+Up wck
+bindsym Mod4+Right wcl
+bindsym Mod1+Control+Left sh
+bindsym Mod1+Control+Down sj
+bindsym Mod1+Control+Up sk
+bindsym Mod1+Control+Right sl
+bindsym Mod1+Shift+Left mh
+bindsym Mod1+Shift+Down mj
+bindsym Mod1+Shift+Up mk
+bindsym Mod1+Shift+Right ml
+bindsym Mod4+Shift+Left wcmh
+bindsym Mod4+Shift+Down wcmj
+bindsym Mod4+Shift+Up wcmk
+bindsym Mod4+Shift+Right wcml
+bindsym Mod1+1 1
+bindsym Mod1+2 2
+bindsym Mod1+3 3
+bindsym Mod1+4 4
+bindsym Mod1+5 5
+bindsym Mod1+6 6
+bindsym Mod1+7 7
+bindsym Mod1+8 8
+bindsym Mod1+9 9
+bindsym Mod1+0 10
+bindsym Mod1+Shift+1 m1
+bindsym Mod1+Shift+2 m2
+bindsym Mod1+Shift+3 m3
+bindsym Mod1+Shift+4 m4
+bindsym Mod1+Shift+5 m5
+bindsym Mod1+Shift+6 m6
+bindsym Mod1+Shift+7 m7
+bindsym Mod1+Shift+8 m8
+bindsym Mod1+Shift+9 m9
+bindsym Mod1+Shift+0 m10
+bindsym Mod1+Shift+q kill
+bindsym Mod1+Shift+e exit
+bindsym Mod1+Shift+r restart
+bindsym Mod4+t bn
+bindsym Mod4+y bp
+bindsym Mod4+u bb

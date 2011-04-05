@@ -1,0 +1,35 @@
+# name and order assignment: /etc/modprobe.d/modprobe.conf
+
+# INTEL: internal sound card. (hw:0,0)
+# CMEDIA: external USB sound card. (hw:1,0)
+# AK5370: external USB microphone. (hw:2,0)
+# CASIO: external midi keyboard. (hw:3,0)
+
+pcm.usb0 {
+	type dmix
+	ipc_key 1
+	slave.pcm "hw:1,0"
+}
+
+ctl.!default
+{
+	type hw
+	card "CMEDIA"
+}
+
+pcm.!default
+{
+	type asym
+	playback.pcm
+	{
+		type plug
+		slave.pcm "usb0"
+	}
+
+	capture.pcm
+	{
+		type plug
+		slave.pcm "hw:2,0"
+	}
+}
+
