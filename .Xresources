@@ -12,6 +12,7 @@ Xft.rgba: rgb
 !options:
 xterm*metaSendsEscape: true
 xterm*bellIsUrgent: true
+xterm*borderWidth: 0
 xterm*saveLines: 1000
 URxvt*cursorBlink: true
 URxvt*urgentOnBell: true
