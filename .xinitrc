@@ -2,7 +2,7 @@
 
 # init_X:
 xrdb -merge "$HOME/.Xresources"
-on_ac_power
+upower -e
 start-pulseaudio-x11
 
 # programs (&):
