@@ -10,9 +10,12 @@ complete -cf man
 PS1='\[\033[1;37m\][\T] \[\033[1;34m\][\w]\[\033[1;37m\] $\[\033[0m\] '
 
 # export:
-export RXVT_SOCKET="$HOME/.cache/rxvt-socket"
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+export BROWSER=firefox
 export EDITOR=nano
+export PATH=$PATH:~/.scripts/
+export VISUAL=geany
+export RXVT_SOCKET="/tmp/rxvt-socket"
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus

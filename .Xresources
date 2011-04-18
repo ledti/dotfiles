@@ -1,5 +1,9 @@
 !font:
-*font: -*-fixed-medium-r-*-*-13-*-*-*-*-*-iso10646-*
+!*font: -*-fixed-medium-r-*-*-13-*-*-*-*-*-iso10646-*
+!*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
+*font: -*-tamsyn-medium-r-normal-*-14-*-*-*-*-*-*-*
+!*font: xft:Terminus:pixelsize=9
+!*font: xft:Liberation Mono:pixelsize=12
 
 !fontstyle:
 Xft.autohint: false
@@ -9,10 +13,13 @@ Xft.hinting: true
 Xft.antialias: true
 Xft.rgba: rgb
 
+!cursor
+Xcursor.theme: Adwaita
+
 !options:
 xterm*metaSendsEscape: true
 xterm*bellIsUrgent: true
-xterm*borderWidth: 0
+!xterm*borderWidth: 0
 xterm*saveLines: 1000
 URxvt*cursorBlink: true
 URxvt*urgentOnBell: true
