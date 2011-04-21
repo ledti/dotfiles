@@ -9,7 +9,6 @@ ibus-daemon -dxr
 
 # programs (&):
 syndaemon -t -k &
-redshift -t 5500:4500 -l 41.502754:-81.346907 &
 
 # wm:
 exec ck-launch-session i3
