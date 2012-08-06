@@ -1,14 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-# init_X:
+# apps:
+redshift -l LAT:LONG -t 6000:4500 &
+
+# configure blank/dpms timeout:
+xset s 3600 3600 && xset dpms 3650 3700 3750
+
+# source .Xresources:
 xrdb -merge "$HOME/.Xresources"
-upower -e
-start-pulseaudio-x11
-urxvtd -q -o -f
-ibus-daemon -dxr
 
-# programs (&):
-syndaemon -t -k &
-
-# wm:
+# launch wm:
 exec ck-launch-session i3

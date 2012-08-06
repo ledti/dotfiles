@@ -1,5 +1,6 @@
 # source:
-. "$HOME/.scripts/bash/udisks_functions"
+. /etc/udisks_functions/udisks_functions
+. "$HOME/.scripts/systemd_functions"
 
 # completion:
 set show-all-if-ambiguous on
@@ -7,18 +8,14 @@ complete -cf sudo
 complete -cf man
 
 # ps1:
-PS1='\[\033[1;37m\][\T] \[\033[1;34m\][\w]\[\033[1;37m\] $\[\033[0m\] '
+export PS1="\[$(tput bold)\]\[$(tput setaf 7)\][\t] \[$(tput setaf 3)\][\w] \[$(tput setaf 7)\]$ \[$(tput sgr0)\]"
 
 # export:
 export BROWSER=firefox
 export EDITOR=nano
-export PATH=$PATH:~/.scripts/
+export PATH=$PATH:~/.bin/
 export VISUAL=geany
-export RXVT_SOCKET="/tmp/rxvt-socket"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
 
 # alias essentials:
 alias c=clear
@@ -27,12 +24,9 @@ alias p=pacman
 alias sp="sudo pacman"
 alias op="$EDITOR"
 alias sop="sudo $EDITOR"
+alias nano="nano -Y conf"
 alias co="cower -t $HOME/Builds -cf"
-
-# alias miscellaneous:
-alias camera="mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0 -fps 15 -vf screenshot"
-alias openports="netstat --all --numeric --programs --inet"
-alias record='arecord -f cd "$(date).wav"'
+alias gsync="grive -p /home/timothy/Desktop/Google\ Drive/"
 
 # colorize commands:
 alias ls="ls --color=auto"

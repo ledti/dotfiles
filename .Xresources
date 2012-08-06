@@ -1,47 +1,23 @@
-!font:
+!fonts:
 !*font: -*-fixed-medium-r-*-*-13-*-*-*-*-*-iso10646-*
 !*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
-*font: -*-tamsyn-medium-r-normal-*-14-*-*-*-*-*-*-*
+xterm*font: -*-tamsyn-medium-r-*-*-14-*-*-*-*-*-*-*
 !*font: xft:Terminus:pixelsize=9
 !*font: xft:Liberation Mono:pixelsize=12
-
-!fontstyle:
-Xft.autohint: false
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintfull
-Xft.hinting: true
-Xft.antialias: true
-Xft.rgba: rgb
-
-!cursor
-Xcursor.theme: Adwaita
 
 !options:
 xterm*metaSendsEscape: true
 xterm*bellIsUrgent: true
-!xterm*borderWidth: 0
 xterm*saveLines: 1000
-URxvt*cursorBlink: true
-URxvt*urgentOnBell: true
-URxvt*visualBell: false
-URxvt*skipBuiltinGlyphs: true
-URxvt*borderless: true
-URxvt*scrollBar: false
-URxvt*saveLines: 1000
-
-!links:
-URxvt*perl-ext-common: matcher
-URxvt*urlLauncher: firefox
-URxvt*matcher.button: 1
 
 !colors:
 !scheme: pnevma
-*foreground: #696969
-*background: #282626
+*foreground: #6F6767
+*background: #3A3636
 *color0: #363636
 *color8: #424242
 *color1: #C37561
-*color9:  #D19485
+*color9: #D19485
 *color2: #A0A57E
 *color10: #B6B99D
 *color3: #D1A375

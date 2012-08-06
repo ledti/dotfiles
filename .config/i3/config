@@ -1,93 +1,104 @@
-# font:
-font -*-terminus-*-*-*-*-12-*-*-*-*-*-iso10646-*
+# i3 options:
+set $mod Mod4
+floating_modifier $mod
+font -*-tamsyn-medium-r-*-*-14-*-*-*-*-*-*-*
+workspace_layout default
+new_window normal
+new_float normal
+workspace_auto_back_and_forth yes
 
-# settings:
-new_container tabbed
-new_window bb
-floating_modifier Mod1
-ipc-socket ~/.config/i3/ipc.sock
-client.background #282626
+# autostart apps:
+exec spacefm
+exec firefox
 
-# assignments:
-assign Ranger 2
-assign QTFM 2
-assign Chromium 3
-assign Namoroka 3
-assign Minefield 3
-assign WeeChat 5
-assign MCabber 4
-assign Pianobar 6
-assign Radio 6
-assign Transmission 9
+# assign apps:
+assign [class="Spacefm"] 2
+assign [class="Firefox"] 3
 
-# autostart:
-exec urxvtd -q -o -f &
+# config apps:
+for_window [instance="Browser"] floating enable
+for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+for_window [instance="Navigator"] border none
 
-# quick binds:
-bindsym Mod4+r exec dmenu_run -fn '-*-terminus-medium-r-normal-*-12-*-*-*-*-*-iso10646-*' &
-bindsym Mod4+e exec urxvtc &
-bindsym Mod4+w exec ~/.scripts/cmdprog &
-
-# netbook keys:
-bindsym Control+Mod4+l exec ~/.scripts/ilock &
-bindsym Control+Mod1+Delete exec sudo reboot &
-bindsym Control+Mod1+BackSpace exec urxvtc -e htop &
-bindsym XF86Sleep exec sudo pm-suspend &
-bindsym XF86PowerOff exec sudo poweroff &
-bindsym XF86AudioMute exec amixer set Speaker toggle &
-bindsym XF86AudioLowerVolume exec amixer set Speaker 5- &
-bindsym XF86AudioRaiseVolume exec amixer set Speaker 5+ unmute &
+# custom binds:
+bindsym Control+Mod1+BackSpace exec xterm -e htop &
+bindsym $mod+F9 exit &
+bindsym $mod+F10 exec systemctl suspend &
+bindsym $mod+F11 exec systemctl reboot &
+bindsym $mod+F12 exec systemctl poweroff &
 
 # wm binds:
-bindsym Mod1+f f
-bindsym Mod1+h s
-bindsym Mod1+w T
-bindsym Mod1+e d
-bindsym Mod1+Shift+space t
-bindsym Mod1+t focus ft
-bindsym Mod1+Left h
-bindsym Mod1+Down j
-bindsym Mod1+Up k
-bindsym Mod1+Right l
-bindsym Mod4+Left wch
-bindsym Mod4+Down wcj
-bindsym Mod4+Up wck
-bindsym Mod4+Right wcl
-bindsym Mod1+Control+Left sh
-bindsym Mod1+Control+Down sj
-bindsym Mod1+Control+Up sk
-bindsym Mod1+Control+Right sl
-bindsym Mod1+Shift+Left mh
-bindsym Mod1+Shift+Down mj
-bindsym Mod1+Shift+Up mk
-bindsym Mod1+Shift+Right ml
-bindsym Mod4+Shift+Left wcmh
-bindsym Mod4+Shift+Down wcmj
-bindsym Mod4+Shift+Up wcmk
-bindsym Mod4+Shift+Right wcml
-bindsym Mod1+1 1
-bindsym Mod1+2 2
-bindsym Mod1+3 3
-bindsym Mod1+4 4
-bindsym Mod1+5 5
-bindsym Mod1+6 6
-bindsym Mod1+7 7
-bindsym Mod1+8 8
-bindsym Mod1+9 9
-bindsym Mod1+0 10
-bindsym Mod1+Shift+1 m1
-bindsym Mod1+Shift+2 m2
-bindsym Mod1+Shift+3 m3
-bindsym Mod1+Shift+4 m4
-bindsym Mod1+Shift+5 m5
-bindsym Mod1+Shift+6 m6
-bindsym Mod1+Shift+7 m7
-bindsym Mod1+Shift+8 m8
-bindsym Mod1+Shift+9 m9
-bindsym Mod1+Shift+0 m10
-bindsym Mod1+Shift+q kill
-bindsym Mod1+Shift+e exit
-bindsym Mod1+Shift+r restart
-bindsym Mod4+t bn
-bindsym Mod4+y bp
-bindsym Mod4+u bb
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+d exec dmenu_run
+bindsym $mod+Shift+Q kill
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+J move left
+bindsym $mod+Shift+K move down
+bindsym $mod+Shift+L move up
+bindsym $mod+Shift+colon move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+f fullscreen
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout default
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+Shift+exclam move container to workspace 1
+bindsym $mod+Shift+at move container to workspace 2
+bindsym $mod+Shift+numbersign move container to workspace 3
+bindsym $mod+Shift+dollar move container to workspace 4
+bindsym $mod+Shift+percent move container to workspace 5
+bindsym $mod+Shift+asciicircum move container to workspace 6
+bindsym $mod+Shift+ampersand move container to workspace 7
+bindsym $mod+Shift+asterisk move container to workspace 8
+bindsym $mod+Shift+parenleft move container to workspace 9
+bindsym $mod+Shift+parenright move container to workspace 10
+bindsym $mod+Shift+C reload
+bindsym $mod+Shift+R restart
+bindsym $mod+r mode "resize"
+
+# resize mode config:
+mode "resize" {
+	bindsym j resize shrink width 10 px or 10 ppt
+	bindsym k resize grow height 10 px or 10 ppt
+	bindsym l resize shrink height 10 px or 10 ppt
+	bindsym semicolon resize grow width 10 px or 10 ppt
+	bindsym 113 resize shrink width 10 px or 10 ppt
+	bindsym 116 resize grow height 10 px or 10 ppt
+	bindsym 111 resize shrink height 10 px or 10 ppt
+	bindsym 114 resize grow width 10 px or 10 ppt
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# i3bar config:
+bar {
+	mode dock
+	status_command i3status
+	font -*-tamsyn-medium-r-*-*-14-*-*-*-*-*-*-*
+}
