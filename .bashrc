@@ -8,7 +8,7 @@ complete -cf sudo
 complete -cf man
 
 # ps1:
-export PS1="\[$(tput bold)\]\[$(tput setaf 7)\][\t] \[$(tput setaf 3)\][\w] \[$(tput setaf 7)\]$ \[$(tput sgr0)\]"
+PS1="\[$(tput bold)\]\[$(tput setaf 7)\][\t] \[$(tput setaf 3)\][\w] \[$(tput setaf 7)\]$ \[$(tput sgr0)\]"
 
 # export:
 export BROWSER=firefox
@@ -16,6 +16,9 @@ export EDITOR=nano
 export PATH=$PATH:~/.bin/
 export VISUAL=geany
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
 
 # alias essentials:
 alias c=clear

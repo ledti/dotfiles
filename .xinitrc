@@ -1,6 +1,9 @@
 #!/bin/sh
 
 # apps:
+xcompmgr &
+feh --bg-fill "$(find ~/Pictures/wallpapers -type f | shuf -n1)" &
+dunst &
 redshift -l LAT:LONG -t 6000:4500 &
 
 # configure blank/dpms timeout:

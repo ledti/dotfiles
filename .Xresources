@@ -1,17 +1,19 @@
 !fonts:
-!*font: -*-fixed-medium-r-*-*-13-*-*-*-*-*-iso10646-*
-!*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
-xterm*font: -*-tamsyn-medium-r-*-*-14-*-*-*-*-*-*-*
-!*font: xft:Terminus:pixelsize=9
-!*font: xft:Liberation Mono:pixelsize=12
+!xterm*font: -*-fixed-medium-r-*-*-13-*-*-*-*-*-iso10646-*
+!xterm*font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
+!xterm*font: -*-tamsyn-medium-r-*-*-14-*-*-*-*-*-*-*
+xterm*font: -*-termsynu-medium-r-*-*-14-*-*-*-*-*-*-*
+!xterm*faceName: xft:Cousine:pixelsize=12
+!xterm*faceName: xft:PT Mono:pixelsize=13
 
 !options:
+xterm*allowColorOps: true
+xterm*dynamicColors: true
 xterm*metaSendsEscape: true
 xterm*bellIsUrgent: true
 xterm*saveLines: 1000
 
-!colors:
-!scheme: pnevma
+!scheme: ledti (modified pnevma3)
 *foreground: #6F6767
 *background: #3A3636
 *color0: #363636
