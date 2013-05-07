@@ -18,6 +18,7 @@ bindsym $mod+x exec evilvte --name ranger --class pixel -e ranger
 bindsym Control+Mod1+Delete exec evilvte --name htop --class pixel -e htop
 bindsym Print exec gnome-screenshot -i
 bindsym --release $mod+F1 exec xprop_notify
+bindsym $mod+F2 exec --no-startup-id pacman_checkupdates
 bindsym $mod+KP_Add exec volume_increase
 bindsym $mod+KP_Subtract exec volume_decrease
 bindsym $mod+m exec volume_mute
