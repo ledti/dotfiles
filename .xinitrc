@@ -1,16 +1,13 @@
 #!/bin/sh
 
-# apps:
-xcompmgr &
-feh --bg-fill "$(find ~/Pictures/wallpapers -type f | shuf -n1)" &
+# start apps:
+redshift -l 0:0 -t 6000:4800 &
+start-pulseaudio-x11 &
+nitrogen --restore &
 dunst &
-redshift -l LAT:LONG -t 6000:4500 &
-
-# configure blank/dpms timeout:
-xset s 3600 3600 && xset dpms 3650 3700 3750
-
-# source .Xresources:
-xrdb -merge "$HOME/.Xresources"
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+system-config-printer-applet &
+compton &
 
 # launch wm:
-exec ck-launch-session i3
+exec i3

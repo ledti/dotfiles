@@ -2,10 +2,10 @@
 
 ### Extra & Community:
 
-conky, feh, lm_sensors, ttf-indic-otf, xcompmgr, i3wm
+conky, feh, lm_sensors, ttf-indic-otf, compton, i3wm
 
 ### AUR:
 
-udisks_functions, ttf-win7-fonts, ttf-google-webfonts, termsyn, wqy-microhei,
-otf-ipafont, termite-git, i3-pango, freetype2-infinality, fontconfig-infinality,
-dunst-git, dmenu-xft, grive
+udisks_functions, ttf-google-fonts-git, termsyn, wqy-microhei,
+otf-ipafont, freetype2-infinality, fontconfig-infinality,
+dunst, dmenu-xft
