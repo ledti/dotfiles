@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ $(checkupdates) ]]; then
+	notify-send "Updates:" "$(checkupdates)"
+else
+	notify-send "There are no updates."
+fi

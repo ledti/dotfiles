@@ -1,24 +1,18 @@
 # source:
 . /etc/udisks_functions/udisks_functions
-. "$HOME/.scripts/systemd_functions"
-
-# completion:
-set show-all-if-ambiguous on
-complete -cf sudo
-complete -cf man
 
 # ps1:
-PS1="\[$(tput bold)\]\[$(tput setaf 7)\][\t] \[$(tput setaf 3)\][\w] \[$(tput setaf 7)\]$ \[$(tput sgr0)\]"
+export PS1="\[$(tput bold)\][\[$(tput sgr0)\]\t\[$(tput bold)\]] [\[$(tput sgr0)\]\w\[$(tput bold)\]]\[$(tput sgr0)\] \\$ "
 
 # export:
-export BROWSER=firefox
+export PATH="$HOME/.bin:$PATH"
+export TERM=xterm-256color
+export TERMINAL=evilvte
+export BROWSER=chromium
 export EDITOR=nano
-export PATH=$PATH:~/.bin/
-export VISUAL=geany
+export VISUAL=gedit
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=false -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 # alias essentials:
 alias c=clear
@@ -27,12 +21,4 @@ alias p=pacman
 alias sp="sudo pacman"
 alias op="$EDITOR"
 alias sop="sudo $EDITOR"
-alias nano="nano -Y conf"
-alias co="cower -t $HOME/Builds -cf"
-alias gsync="grive -p /home/timothy/Desktop/Google\ Drive/"
-
-# colorize commands:
-alias ls="ls --color=auto"
-alias ll="ls -lh --color=auto"
-alias la="ls -a --color=auto"
-alias grep="grep --color=auto"
+alias co="cower -c -f -t $HOME/Builds"

@@ -1,8 +1,8 @@
 # source:
-. "$HOME/.bashrc"
+. $HOME/.bashrc
 
 # init_tty1:
-if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]] && [[ "$(whoami)" != "root" ]]; then
-	startx &> "$HOME/.xsession_log"
+if [[ -z $DISPLAY ]] && [[ $XDG_VTNR = 1 ]] && [[ $(whoami) != root ]]; then
+	startx &> $HOME/.xsession_log
 	logout
 fi
