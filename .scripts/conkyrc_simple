@@ -1,0 +1,9 @@
+out_to_x no
+out_to_console yes
+extra_newline yes
+uppercase yes
+short_units yes
+update_interval 1
+
+TEXT
+kernel: ${kernel} 𐆑 gfx: ${hwmon temp 1}C° 𐆑 down: ${downspeed enp3s0} 𐆑 up: ${upspeed enp3s0} 𐆑 mem: ${memeasyfree} 𐆑 cpu: ${cpu cpu0}% 𐆑 date: ${time %D} 𐆑 time: ${time %r} 

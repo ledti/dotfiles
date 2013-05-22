@@ -13,21 +13,21 @@ workspace_auto_back_and_forth yes
 # app binds:
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+z exec --no-startup-id i3-dmenu-desktop --dmenu='dmenu -i -fn "Share-10:bold"' --entry-type=filename
-bindsym $mod+d exec dmenu_run -i -fn "Share-10:bold"
+bindsym $mod+d exec --no-startup-id dmenu_run -i -fn "Share-10:bold"
 bindsym $mod+x exec evilvte --name ranger --class pixel -e ranger
 bindsym Control+Mod1+Delete exec evilvte --name htop --class pixel -e htop
 bindsym Print exec gnome-screenshot -i
-bindsym --release $mod+F1 exec xprop_notify
+bindsym --release $mod+F1 exec --no-startup-id xprop_notify
 bindsym $mod+F2 exec --no-startup-id pacman_checkupdates
-bindsym $mod+KP_Add exec volume_increase
-bindsym $mod+KP_Subtract exec volume_decrease
-bindsym $mod+m exec volume_mute
+bindsym $mod+KP_Add exec --no-startup-id volume_increase
+bindsym $mod+KP_Subtract exec --no-startup-id volume_decrease
+bindsym $mod+m exec --no-startup-id volume_mute
 
 # autostart apps:
 exec chromium
 exec spacefm
-exec evilvte --name weechat --class pixel -fn "Agave 10"
-exec evilvte --name profanity --class pixel -fn "Agave 10"
+exec evilvte --name weechat --class pixel
+exec evilvte --name profanity --class pixel
 exec i3-msg workspace 3
 
 # assign apps:
@@ -37,15 +37,16 @@ assign [instance="weechat"] 9
 assign [instance="profanity"] 10
 
 # config apps:
+for_window [instance="spacefm" window_role="task_dialog"] floating enable
 for_window [instance="spacefm" window_role="file_manager"] border none
 for_window [instance="chromium" window_role="browser"] border none
 for_window [class="pixel"] border pixel 3
 
 # colors:
-client.focused			#285577 #285577 #FFFFFF #285577
+client.focused				#285577 #285577 #FFFFFF #285577
 client.focused_inactive		#5f676A #5f676A #FFFFFF #5f676A
-client.unfocused		#222222 #222222 #888888 #222222
-client.urgent			#900000 #900000 #FFFFFF #900000
+client.unfocused			#222222 #222222 #888888 #222222
+client.urgent				#900000 #900000 #FFFFFF #900000
 
 # wm binds:
 bindsym $mod+Shift+q kill
@@ -53,10 +54,10 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left move left 25
+bindsym $mod+Shift+Down move down 25
+bindsym $mod+Shift+Up move up 25
+bindsym $mod+Shift+Right move right 25
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen
@@ -92,10 +93,20 @@ bindsym $mod+o scratchpad show
 # resize mode:
 bindsym $mod+r mode "resize"
 mode "resize" {
-	bindsym Left resize shrink width 10 px or 10 ppt
-	bindsym Down resize grow height 10 px or 10 ppt
-	bindsym Up resize shrink height 10 px or 10 ppt
-	bindsym Right resize grow width 10 px or 10 ppt
+	bindsym Left resize shrink width 10
+	bindsym Down resize grow height 10
+	bindsym Up resize shrink height 10
+	bindsym Right resize grow width 10
+
+	bindsym Shift+Left resize shrink width 50
+	bindsym Shift+Down resize grow height 50
+	bindsym Shift+Up resize shrink height 50
+	bindsym Shift+Right resize grow width 50
+
+	bindsym $mod+Shift+Left move left 25
+	bindsym $mod+Shift+Down move down 25
+	bindsym $mod+Shift+Up move up 25
+	bindsym $mod+Shift+Right move right 25
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
@@ -152,13 +163,14 @@ bindsym $mod+F11 exit
 bar {
 	mode dock
 	position bottom
-	font pango: Share Bold 10
-	status_command i3status
+	font pango: Share Tech Bold 10
+	status_command conky -c ~/.scripts/conkyrc_simple
 
 	colors {
-		focused_workspace  #285577 #285577 #FFFFFF
-		active_workspace   #5F676A #5F676A #FFFFFF
-		inactive_workspace #000000 #000000 #888888
-		urgent_workspace   #900000 #900000 #FFFFFF
+		statusline			#E6E6E6
+		focused_workspace	#285577 #285577 #FFFFFF
+		active_workspace	#5F676A #5F676A #FFFFFF
+		inactive_workspace	#000000 #000000 #888888
+		urgent_workspace	#900000 #900000 #FFFFFF
 	}
 }

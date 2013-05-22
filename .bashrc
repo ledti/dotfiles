@@ -9,10 +9,10 @@ export PATH="$HOME/.bin:$PATH"
 export TERM=xterm-256color
 export TERMINAL=evilvte
 export BROWSER=chromium
-export EDITOR=nano
+export EDITOR=vim
 export VISUAL=gedit
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=false -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 
 # alias essentials:
 alias c=clear
