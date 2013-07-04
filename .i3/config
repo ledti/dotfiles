@@ -46,10 +46,10 @@ for_window [instance="chromium" window_role="browser"] border none
 for_window [class="pixel"] border pixel 3
 
 # colors:
-client.focused				#285577 #285577 #FFFFFF #285577
-client.focused_inactive		#5f676A #5f676A #FFFFFF #5f676A
-client.unfocused			#222222 #222222 #888888 #222222
-client.urgent				#900000 #900000 #FFFFFF #900000
+client.focused              #285577 #285577 #FFFFFF #285577
+client.focused_inactive     #5f676A #5f676A #FFFFFF #5f676A
+client.unfocused            #222222 #222222 #888888 #222222
+client.urgent               #900000 #900000 #FFFFFF #900000
 
 # wm binds:
 bindsym $mod+Shift+q kill
@@ -96,56 +96,56 @@ bindsym $mod+o scratchpad show
 # resize mode:
 bindsym $mod+r mode "resize"
 mode "resize" {
-	bindsym Left resize shrink width 10
-	bindsym Down resize grow height 10
-	bindsym Up resize shrink height 10
-	bindsym Right resize grow width 10
+    bindsym Left resize shrink width 10
+    bindsym Down resize grow height 10
+    bindsym Up resize shrink height 10
+    bindsym Right resize grow width 10
 
-	bindsym Shift+Left resize shrink width 50
-	bindsym Shift+Down resize grow height 50
-	bindsym Shift+Up resize shrink height 50
-	bindsym Shift+Right resize grow width 50
+    bindsym Shift+Left resize shrink width 50
+    bindsym Shift+Down resize grow height 50
+    bindsym Shift+Up resize shrink height 50
+    bindsym Shift+Right resize grow width 50
 
-	bindsym $mod+Shift+Left move left 25
-	bindsym $mod+Shift+Down move down 25
-	bindsym $mod+Shift+Up move up 25
-	bindsym $mod+Shift+Right move right 25
+    bindsym $mod+Shift+Left move left 25
+    bindsym $mod+Shift+Down move down 25
+    bindsym $mod+Shift+Up move up 25
+    bindsym $mod+Shift+Right move right 25
 
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 # systemd mode:
 bindsym $mod+s mode "systemd"
 mode "systemd" {
-	bindsym 1 exec systemctl suspend; mode "default"
-	bindsym 2 exec systemctl reboot; mode "default"
-	bindsym 3 exec systemctl poweroff; mode "default"
+    bindsym 1 exec systemctl suspend; mode "default"
+    bindsym 2 exec systemctl reboot; mode "default"
+    bindsym 3 exec systemctl poweroff; mode "default"
 
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 # layout mode:
 bindsym $mod+l mode "layout"
 mode "layout" {
-	bindsym 1 layout stacking; mode "default"
-	bindsym 2 layout tabbed; mode "default"
-	bindsym 3 layout toggle split; mode "default"
+    bindsym 1 layout stacking; mode "default"
+    bindsym 2 layout tabbed; mode "default"
+    bindsym 3 layout toggle split; mode "default"
 
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 # border mode:
 bindsym $mod+b mode "border"
 mode "border" {
-	bindsym 1 border normal 3; mode "default"
-	bindsym 2 border pixel 3; mode "default"
-	bindsym 3 border none; mode "default"
+    bindsym 1 border normal 3; mode "default"
+    bindsym 2 border pixel 3; mode "default"
+    bindsym 3 border none; mode "default"
 
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 # i3wm mode:
@@ -155,25 +155,25 @@ mode "i3wm" {
 bindsym $mod+F9 reload
 bindsym $mod+F10 restart
 bindsym $mod+F11 exit
-	bindsym 1 reload; mode "default"
-	bindsym 2 restart; mode "default"
-	bindsym 3 exit; mode "default"
+    bindsym 1 reload; mode "default"
+    bindsym 2 restart; mode "default"
+    bindsym 3 exit; mode "default"
 
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bar {
-	mode dock
-	position bottom
-	font pango: Share Tech 10
-	status_command conky -c ~/.scripts/conkyrc_simple
+    mode dock
+    position bottom
+    font pango: Share Tech 10
+    status_command conky -c ~/.scripts/conkyrc_simple
 
-	colors {
-		statusline			#E6E6E6
-		focused_workspace	#285577 #285577 #FFFFFF
-		active_workspace	#5F676A #5F676A #FFFFFF
-		inactive_workspace	#000000 #000000 #888888
-		urgent_workspace	#900000 #900000 #FFFFFF
-	}
+    colors {
+        statusline          #E6E6E6
+        focused_workspace   #285577 #285577 #FFFFFF
+        active_workspace    #5F676A #5F676A #FFFFFF
+        inactive_workspace  #000000 #000000 #888888
+        urgent_workspace    #900000 #900000 #FFFFFF
+    }
 }
