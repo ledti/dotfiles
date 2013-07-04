@@ -6,4 +6,4 @@ short_units yes
 update_interval 1
 
 TEXT
-kernel: ${kernel} 𐆑 gfx: ${hwmon temp 1}C° 𐆑 down: ${downspeed enp3s0} 𐆑 up: ${upspeed enp3s0} 𐆑 mem: ${memeasyfree} 𐆑 cpu: ${cpu cpu0}% 𐆑 date: ${time %D} 𐆑 time: ${time %r} 
+kernel: ${kernel} 𐆑 cpu temp: ${hwmon 2 temp 2}C° 𐆑 gfx temp: ${hwmon temp 1}C° 𐆑 down: ${downspeed enp3s0} 𐆑 up: ${upspeed enp3s0} 𐆑 mem: ${memeasyfree} 𐆑 cpu: ${cpu cpu0}% ${if_running makepkg}(makepkg) ${else}${if_running make}(make) ${endif}${endif}𐆑 date: ${time %D} 𐆑 time: ${time %r} 

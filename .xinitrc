@@ -1,13 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
 # start apps:
-redshift -l 0:0 -t 6000:4800 &
-start-pulseaudio-x11 &
 nitrogen --restore &
+redshift -l LAT:LONG -t 6000:4800 &
+pulseaudio --start &
 dunst &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 system-config-printer-applet &
 compton &
+conky -c "$HOME/.scripts/conkyrc_journalctl" &
 
 # launch wm:
 exec i3
