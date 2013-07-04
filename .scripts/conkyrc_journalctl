@@ -13,4 +13,4 @@ update_interval 15
 font -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
 
 TEXT
-${exec journalctl -b -f}
+${exec journalctl -b -n 12}
