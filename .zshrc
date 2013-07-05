@@ -29,6 +29,7 @@ alias c=clear
 alias e=exit
 alias p=pacman
 alias sp="sudo pacman"
+alias spc="sudo pacman -Sc"
 alias op="$EDITOR"
 alias sop="sudo $EDITOR"
 alias co="cower -c -f -t $HOME/Builds"
