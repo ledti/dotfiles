@@ -166,7 +166,7 @@ bar {
     mode dock
     position bottom
     font pango: Share Tech 10
-    status_command ~/.scripts/i3bar_exec
+    status_command ~/.bin/i3bar_exec
 
     colors {
         statusline          #E6E6E6

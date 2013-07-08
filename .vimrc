@@ -10,7 +10,7 @@ syntax on
 filetype plugin indent on
 set t_Co=256
 set background=dark
-colorscheme railscasts
+colorscheme elflord
 map \ :noh <enter>
 set printoptions=paper:letter,number:yes,left:5pc
 set printfont="Envy Code R":h10
