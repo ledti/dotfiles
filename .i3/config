@@ -25,24 +25,23 @@ bindsym $mod+m exec --no-startup-id volume_mute
 
 # autostart apps:
 exec evilvte --name ranger --class pixel -e ranger
-exec firefox
-exec evilvte --name weechat --class pixel
 exec evilvte --name profanity --class pixel
+exec dwb
 exec i3-msg workspace 3
 
 # assign apps:
 assign [instance="ranger" class="pixel"] 2
 assign [instance="spacefm"] 2
-assign [class="Firefox|Aurora"] 3
+assign [class="Firefox|Aurora|Dwb"] 3
 assign [instance="chromium"] 3
-assign [instance="weechat"] 9
 assign [instance="profanity"] 10
 
 # config apps:
 for_window [instance="Browser|Places|Abp" class="Firefox|Aurora"] floating enable
 for_window [instance="Navigator" class="Firefox|Aurora"] border none
-for_window [instance="spacefm" window_role="file_manager"] border none
 for_window [instance="chromium" window_role="browser"] border none
+for_window [class="Dwb"] border none
+for_window [instance="spacefm" window_role="file_manager"] border none
 for_window [class="pixel"] border pixel 3
 
 # colors:
@@ -167,7 +166,7 @@ bar {
     mode dock
     position bottom
     font pango: Share Tech 10
-    status_command conky -c ~/.scripts/conkyrc_simple
+    status_command ~/.scripts/i3bar_exec
 
     colors {
         statusline          #E6E6E6

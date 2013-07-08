@@ -1,0 +1,74 @@
+out_to_x no
+out_to_console yes
+short_units yes
+update_interval 1
+
+TEXT
+
+[\
+{"full_text":"KERNEL","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${kernel}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+{"full_text":"CPU TEMP","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${hwmon 2 temp 2}<45}${hwmon 2 temp 2}","color":"\#AAF096","separator":false,"separator_block_width":0},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${hwmon 2 temp 2}<50}${hwmon 2 temp 2}","color":"\#F0DC64","separator":false,"separator_block_width":0},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${hwmon 2 temp 2}<55}${hwmon 2 temp 2}","color":"\#FF9933","separator":false,"separator_block_width":0},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${hwmon 2 temp 2}>=55}${hwmon 2 temp 2}","color":"\#FF3333","separator":false,"separator_block_width":0},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${endif}${endif}${endif}${endif}"},\
+{"full_text":"C°","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+{"full_text":"GFX TEMP","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${hwmon temp 1}<50}${hwmon temp 1}","color":"\#AAF096","separator":false,"separator_block_width":0},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${hwmon temp 1}<55}${hwmon temp 1}","color":"\#F0DC64","separator":false,"separator_block_width":0},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${hwmon temp 1}<60}${hwmon temp 1}","color":"\#FF9933","separator":false,"separator_block_width":0},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${hwmon temp 1}>=60}${hwmon temp 1}","color":"\#FF3333","separator":false,"separator_block_width":0},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${endif}${endif}${endif}${endif}"},\
+{"full_text":"C°","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+{"full_text":"DOWN","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${downspeedf enp3s0}<100}${downspeed enp3s0}","color":"\#AAF096","separator":false,"separator_block_width":6},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${downspeedf enp3s0}<300}${downspeed enp3s0}","color":"\#68B1E8","separator":false,"separator_block_width":6},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${downspeedf enp3s0}<700}${downspeed enp3s0}","color":"\#DB70B8","separator":false,"separator_block_width":6},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${downspeedf enp3s0}<1000}${downspeed enp3s0}","color":"\#9470DB","separator":false,"separator_block_width":6},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${downspeedf enp3s0}>=1000}${downspeed enp3s0}","color":"\#FF3333","separator":false,"separator_block_width":6},\
+{"full_text":"${endif}${endif}${endif}${endif}${endif}"},\
+{"full_text":"UP","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${upspeedf enp3s0}<15}${upspeed enp3s0}","color":"\#AAF096","separator":false,"separator_block_width":6},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${upspeedf enp3s0}<35}${upspeed enp3s0}","color":"\#9470DB","separator":false,"separator_block_width":6},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${upspeedf enp3s0}>=35}${upspeed enp3s0}","color":"\#FF3333","separator":false,"separator_block_width":6},\
+{"full_text":"${endif}${endif}${endif}"},\
+{"full_text":"MEM","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${memperc}<30}${memeasyfree}","color":"\#AAF096","separator":false,"separator_block_width":6},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${memperc}<60}${memeasyfree}","color":"\#F0DC64","separator":false,"separator_block_width":6},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${memperc}<85}${memeasyfree}","color":"\#FF9933","separator":false,"separator_block_width":6},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${memperc}>=85}${memeasyfree}","color":"\#FF3333","separator":false,"separator_block_width":6},\
+{"full_text":"${endif}${endif}${endif}${endif}"},\
+{"full_text":"CPU","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${cpu cpu0}<25}${cpu cpu0}","color":"\#AAF096","separator":false,"separator_block_width":0},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${cpu cpu0}<50}${cpu cpu0}","color":"\#F0DC64","separator":false,"separator_block_width":0},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${cpu cpu0}<75}${cpu cpu0}","color":"\#FF9933","separator":false,"separator_block_width":0},\
+{"full_text":"${else}","separator":false,"separator_block_width":0},\
+{"full_text":"${if_match ${cpu cpu0}<=100}${cpu cpu0}","color":"\#FF3333","separator":false,"separator_block_width":0},\
+{"full_text":"${endif}${endif}${endif}${endif}"},\
+{"full_text":"%","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+{"full_text":"DATE","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${time %D}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+{"full_text":"TIME","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${time %r}","color":"\#EEEEEE","separator":false}\
+],
