@@ -1,4 +1,3 @@
 #!/bin/bash
 
 pamixer --toggle-mute
-notify-send -u low -t 100 "Volume" "Muted: $(pamixer --get-mute)."

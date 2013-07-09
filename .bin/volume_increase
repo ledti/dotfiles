@@ -1,4 +1,3 @@
 #!/bin/bash
 
-pamixer --allow-boost --increase 5
-notify-send -u low -t 100 "Volume" "$(pamixer --get-volume)%"
+pamixer --allow-boost --increase 10

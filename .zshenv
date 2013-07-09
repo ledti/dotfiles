@@ -4,7 +4,7 @@ path=($HOME/.bin $path)
 
 # set local variables:
 export TERM=vte-256color
-export TERMINAL=evilvte
+export TERMINAL=termite
 export TERMCMD="$TERMINAL"
 export EDITOR=vim
 export VISUAL=subl3

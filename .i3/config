@@ -14,8 +14,8 @@ workspace_auto_back_and_forth yes
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+z exec i3-dmenu-desktop --dmenu='dmenu -i -fn "Share-10"' --entry-type=filename
 bindsym $mod+d exec dmenu_run -i -fn "Share-10"
-bindsym $mod+x exec evilvte --name ranger -e ranger
-bindsym Control+Mod1+Delete exec evilvte --name htop --class pixel -e htop
+bindsym $mod+x exec $TERMINAL --name ranger -e ranger
+bindsym Control+Mod1+Delete exec $TERMINAL --name htop --class pixel -e htop
 bindsym $mod+Print exec gnome-screenshot -i
 bindsym --release $mod+F1 exec --no-startup-id xprop_notify
 bindsym $mod+F2 exec --no-startup-id pacman_checkupdates
@@ -24,8 +24,8 @@ bindsym $mod+KP_Subtract exec --no-startup-id volume_decrease
 bindsym $mod+m exec --no-startup-id volume_mute
 
 # autostart apps:
-exec evilvte --name ranger --class pixel -e ranger
-exec evilvte --name profanity --class pixel
+exec $TERMINAL --name ranger --class pixel -e ranger
+exec $TERMINAL --name profanity --class pixel
 exec dwb
 exec i3-msg workspace 3
 
