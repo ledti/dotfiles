@@ -9,12 +9,15 @@ setopt extendedglob
 setopt banghist
 setopt incappendhistory
 setopt correct
+setopt completealiases
+#setopt null_glob
 
-autoload -U compinit
+autoload -Uz compinit
 compinit
 
 zstyle ":completion:*" rehash true
 zstyle ":completion:*" menu select
+zstyle ":completion:*" matcher-list "" "m:{a-zA-Z}={A-Za-z}"
 
 # keybinds:
 bindkey "^R" history-incremental-search-backward
@@ -27,10 +30,29 @@ PROMPT="%B[%b%*%B]%b%1(j. %B[%b%j%B]%b.) %B[%b%~%B]%b %# "
 # aliases:
 alias c=clear
 alias e=exit
-alias p=pacman
-alias sp="sudo pacman"
+alias p=pacman && compdef p=pacman
+alias sp="sudo pacman" && compdef sp=pacman
+alias spu="sudo pacman -Syu" && compdef spu=pacman
 alias spc="sudo pacman -Sc"
 alias op="$EDITOR"
 alias sop="sudo $EDITOR"
-alias co="cower -c -f -t $HOME/Builds"
+alias co="cower -c -f -t $HOME/Builds" && compdef co=cower
 alias pb="pbget --dir $HOME/Builds"
+
+sdm() {
+
+    # create device aliases:
+    for device in /dev/sd[^ab]*(N); do
+        alias ${device#/dev/}m="udisksctl mount -b $device"
+        alias ${device#/dev/}u="udisksctl unmount -b $device"
+    done
+
+#    local device
+#    unalias -m "sd[[:alpha:]]*"
+#    device=(/dev/sd[[:alpha:]]*)
+#    device=${device#/dev/}
+#    echo $device
+}
+
+sdm
+#unset -f sdm

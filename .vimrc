@@ -8,7 +8,6 @@ set ignorecase
 set smartcase
 syntax on
 filetype plugin indent on
-set t_Co=256
 set background=dark
 colorscheme elflord
 map \ :noh <enter>

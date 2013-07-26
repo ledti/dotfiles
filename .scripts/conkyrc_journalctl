@@ -1,15 +1,18 @@
 own_window yes
 own_window_type override
 own_window_argb_visual yes
-own_window_argb_value 150
+own_window_argb_value 100
 own_window_colour 323232
 default_color DCDCDC
 default_shade_color 282828
 draw_shades yes
-minimum_size 1920
+minimum_size 1899
+maximum_width 1899
+gap_x 10
+gap_y 10
 alignment top_left
 double_buffer yes
-update_interval 15
+update_interval 5
 font -*-terminus-medium-*-*-*-12-*-*-*-*-*-iso10646-*
 
 TEXT

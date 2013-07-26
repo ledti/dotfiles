@@ -12,7 +12,7 @@ workspace_auto_back_and_forth yes
 
 # app binds:
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+z exec i3-dmenu-desktop --dmenu='dmenu -i -fn "Share-10"' --entry-type=filename
+bindsym $mod+z exec j4-dmenu-desktop --dmenu='dmenu -i -fn "Share-10"'
 bindsym $mod+d exec dmenu_run -i -fn "Share-10"
 bindsym $mod+x exec $TERMINAL --name ranger -e ranger
 bindsym Control+Mod1+Delete exec $TERMINAL --name htop --class pixel -e htop
@@ -26,7 +26,7 @@ bindsym $mod+m exec --no-startup-id volume_mute
 # autostart apps:
 exec $TERMINAL --name ranger --class pixel -e ranger
 exec $TERMINAL --name profanity --class pixel
-exec dwb
+exec $BROWSER
 exec i3-msg workspace 3
 
 # assign apps:
@@ -42,6 +42,7 @@ for_window [instance="Navigator" class="Firefox|Aurora"] border none
 for_window [instance="chromium" window_role="browser"] border none
 for_window [class="Dwb"] border none
 for_window [instance="spacefm" window_role="file_manager"] border none
+for_window [class="Gnome-screenshot"] floating enable
 for_window [class="pixel"] border pixel 3
 
 # colors:
