@@ -5,9 +5,9 @@ set $mod Mod4
 font pango: Share 10
 floating_modifier $mod
 default_orientation vertical
-hide_edge_borders none
+hide_edge_borders vertical
 workspace_layout stacking
-new_window normal 3
+new_window pixel 3
 workspace_auto_back_and_forth yes
 
 # app binds:
@@ -15,7 +15,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+z exec j4-dmenu-desktop --dmenu='dmenu -i -fn "Share-10"'
 bindsym $mod+d exec dmenu_run -i -fn "Share-10"
 bindsym $mod+x exec $TERMINAL --name ranger -e ranger
-bindsym Control+Mod1+Delete exec $TERMINAL --name htop --class pixel -e htop
+bindsym Control+Mod1+Delete exec $TERMINAL -e htop
 bindsym $mod+Print exec gnome-screenshot -i
 bindsym --release $mod+F1 exec --no-startup-id xprop_notify
 bindsym $mod+F2 exec --no-startup-id pacman_checkupdates
@@ -24,17 +24,15 @@ bindsym $mod+KP_Subtract exec --no-startup-id volume_decrease
 bindsym $mod+m exec --no-startup-id volume_mute
 
 # autostart apps:
-exec $TERMINAL --name ranger --class pixel -e ranger
-exec $TERMINAL --name profanity --class pixel
+exec $TERMINAL --name ranger --class ranger -e ranger
 exec $BROWSER
 exec i3-msg workspace 3
 
 # assign apps:
-assign [instance="ranger" class="pixel"] 2
+assign [instance="ranger" class="ranger"] 2
 assign [instance="spacefm"] 2
 assign [class="Firefox|Aurora|Dwb"] 3
 assign [instance="chromium"] 3
-assign [instance="profanity"] 10
 
 # config apps:
 for_window [instance="Browser|Places|Abp" class="Firefox|Aurora"] floating enable
@@ -43,13 +41,12 @@ for_window [instance="chromium" window_role="browser"] border none
 for_window [class="Dwb"] border none
 for_window [instance="spacefm" window_role="file_manager"] border none
 for_window [class="Gnome-screenshot"] floating enable
-for_window [class="pixel"] border pixel 3
 
 # colors:
-client.focused              #285577 #285577 #FFFFFF #285577
-client.focused_inactive     #5f676A #5f676A #FFFFFF #5f676A
+client.focused              #543857 #543857 #FFFFFF #543857
+client.focused_inactive     #4D4D4D #4D4D4D #FFFFFF #4D4D4D
 client.unfocused            #222222 #222222 #888888 #222222
-client.urgent               #900000 #900000 #FFFFFF #900000
+client.urgent               #87292E #87292E #FFFFFF #87292E
 
 # wm binds:
 bindsym $mod+Shift+q kill
@@ -140,8 +137,8 @@ mode "layout" {
 # border mode:
 bindsym $mod+b mode "border"
 mode "border" {
-    bindsym 1 border normal 3; mode "default"
-    bindsym 2 border pixel 3; mode "default"
+    bindsym 1 border pixel 3; mode "default"
+    bindsym 2 border normal 2; mode "default"
     bindsym 3 border none; mode "default"
 
     bindsym Return mode "default"
@@ -171,9 +168,9 @@ bar {
 
     colors {
         statusline          #E6E6E6
-        focused_workspace   #285577 #285577 #FFFFFF
+        focused_workspace   #543857 #543857 #FFFFFF
         active_workspace    #5F676A #5F676A #FFFFFF
         inactive_workspace  #000000 #000000 #888888
-        urgent_workspace    #900000 #900000 #FFFFFF
+        urgent_workspace    #87292E #87292E #FFFFFF
     }
 }
