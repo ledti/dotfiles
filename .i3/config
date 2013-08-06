@@ -41,6 +41,7 @@ for_window [instance="chromium" window_role="browser"] border none
 for_window [class="Dwb"] border none
 for_window [instance="spacefm" window_role="file_manager"] border none
 for_window [class="Gnome-screenshot"] floating enable
+for_window [class="Phoenix"] floating enable; border normal 3
 
 # colors:
 client.focused              #543857 #543857 #FFFFFF #543857

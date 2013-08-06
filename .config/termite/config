@@ -1,0 +1,157 @@
+[options]
+resize_grip = false
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+visible_bell = false
+mouse_autohide = true
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = Envy Code R 10
+scrollback_lines = 1000
+search_wrap = true
+geometry = 740x480
+transparency = 0.0
+pseudo_transparency = false
+cursor_blink = system
+cursor_shape = block
+
+# custom-1:
+[custom-1]
+foreground = #C5C8C6
+background = #272626
+color0 = #322A3C
+color1 = #A04363
+color2 = #9B9329
+color3 = #BF7A29
+color4 = #6A8C8C
+color5 = #856774
+color6 = #77BEBC
+color7 = #A5A593
+color8 = #46423B
+color9 = #AE837A
+color10 = #B4AA30
+color11 = #C7A551
+color12 = #74999E
+color13 = #9C818E
+color14 = #9fA590
+color15 = #C1C4BC
+
+# ocean:
+[colors]
+foreground = #C0C5CE
+background = #2B303B
+
+# black:
+color0 = #343D46
+# dark gray:
+color8 = #4F5B66
+
+# red:
+color1 = #B24E47
+# light red:
+color9 = #BF616A
+
+# green:
+color2 = #8BB740
+# light green:
+color10 = #A3BE8C
+
+# brown:
+color3 = #D08770
+# yellow:
+color11 = #EBCB8B
+
+# blue:
+color4 = #6F82C8
+# light blue:
+color12 = #96BCD9
+
+# magenta:
+color5 = #856774
+# light magenta:
+color13 = #9E7787
+
+# cyan:
+color6 = #699EAD
+# bright cyan:
+color14 = #77A6A0
+
+# gray:
+color7 = #A7ADBA
+# white:
+color15 = #C1C4BC
+
+# w0ng:
+[w0ng]
+foreground = #C5C8C6
+background = #232C31
+color0 = #2D3C46
+color1 = #AC4142
+color2 = #90A959
+color3 = #DE935F
+color4 = #6A9FB5
+color5 = #AA759F
+color6 = #75B5AA
+color7 = #869298
+color8 = #425059
+color9 = #CC6666
+color10 = #B5BD68
+color11 = #F0C674
+color12 = #81A2BE
+color13 = #B294BB
+color14 = #8ABEB7
+color15 = #C5C8C6
+
+[custom-2]
+foreground = #c5c8c6
+background = #232C31
+color0 = #2D3C46
+color1 = #a04363
+color2 = #9b9329
+color3 = #bf7a29
+color4 = #6a8c8c
+color5 = #856774
+color6 = #757978
+color7 = #bcbcaf
+color8 = #425059
+color9 = #ae837a
+color10 = #b4aa30
+color11 = #c7a551
+color12 = #74999e
+color13 = #9c818e
+color14 = #9fa590
+color15 = #c1c4bc
+
+[custom-3]
+foreground = #dcdccc
+background = #3f3f3f
+color0 = #48494B
+color1 = #AB716D
+color2 = #60b48a
+color3 = #dfaf8f
+color4 = #506070
+color5 = #dc8cc3
+color6 = #8cd0d3
+color7 = #dcdccc
+color8 = #709080
+color9 = #dca3a3
+color10 = #c3bf9f
+color11 = #f0dfaf
+color12 = #94bff3
+color13 = #ec93d3
+color14 = #93e0e3
+color15 = #ffffff
+
+[hints]
+#font = Monospace 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
+
+# vim: ft=dosini
