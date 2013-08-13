@@ -3,8 +3,7 @@ typeset -U path
 path=($HOME/.bin $HOME/.gem/ruby/2.0.0/bin $path)
 
 # set local variables:
-export TERM=vte-256color
-export TERMINAL=termite
+export TERMINAL=st
 export TERMCMD="$TERMINAL"
 export EDITOR=vim
 export BROWSER=chromium
