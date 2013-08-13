@@ -36,8 +36,8 @@ alias spu="sudo pacman -Syu" && compdef spu=pacman
 alias spc="sudo pacman -Sc"
 alias op="$EDITOR"
 alias sop="sudo $EDITOR"
-alias co="cower -c -f -t $HOME/Builds" && compdef co=cower
-alias pb="pbget --dir $HOME/Builds"
+alias co="cower -c -f -t $HOME/builds" && compdef co=cower
+alias pb="pbget --dir $HOME/builds"
 
 sdm() {
 
@@ -56,3 +56,4 @@ sdm() {
 
 sdm
 #unset -f sdm
+

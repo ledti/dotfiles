@@ -12,47 +12,57 @@ workspace_auto_back_and_forth yes
 
 # app binds:
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+z exec j4-dmenu-desktop --dmenu='dmenu -i -fn "Share-10"'
-bindsym $mod+d exec dmenu_run -i -fn "Share-10"
-bindsym $mod+x exec $TERMINAL --name ranger -e ranger
+bindsym $mod+z exec j4-dmenu-desktop --dmenu='dmenu -i -fn "Envy Code R 10"'
+bindsym $mod+d exec dmenu_run -i -fn "Envy Code R 10"
 bindsym Control+Mod1+Delete exec $TERMINAL -e htop
 bindsym $mod+Print exec gnome-screenshot -i
+bindsym $mod+Shift+Print exec scrot -e "mv $f $HOME/Pictures"
 bindsym --release $mod+F1 exec --no-startup-id xprop_notify
 bindsym $mod+F2 exec --no-startup-id pacman_checkupdates
-bindsym $mod+KP_Add exec --no-startup-id volume_increase
-bindsym $mod+KP_Subtract exec --no-startup-id volume_decrease
-bindsym $mod+m exec --no-startup-id volume_mute
+bindsym XF86Explorer exec $TERMINAL --name ranger -e ranger
+bindsym XF86AudioRaiseVolume exec --no-startup-id volume_increase
+bindsym XF86AudioLowerVolume exec --no-startup-id volume_decrease
+bindsym XF86AudioMute exec --no-startup-id volume_mute
+bindsym XF86Tools exec $TERMINAL --class pianobar -e pianobar
+bindsym XF86AudioPrev exec "echo 't' > $HOME/.config/pianobar/ctl"
+bindsym XF86AudioStop exec "echo '+' > $HOME/.config/pianobar/ctl"
+bindsym XF86AudioPause exec "echo 'p' > $HOME/.config/pianobar/ctl"
+bindsym XF86AudioNext exec "echo 'n' > $HOME/.config/pianobar/ctl"
+bindsym $mod+XF86AudioRaiseVolume exec "echo ')' > $HOME/.config/pianobar/ctl"
+bindsym $mod+XF86AudioLowerVolume exec "echo '(' > $HOME/.config/pianobar/ctl"
 
 # autostart apps:
-exec $TERMINAL --name ranger --class ranger -e ranger
+exec $TERMINAL --class ranger -e ranger
 exec $BROWSER
 exec i3-msg workspace 3
 
 # assign apps:
-assign [instance="ranger" class="ranger"] 2
-assign [instance="spacefm"] 2
-assign [class="Firefox|Aurora|Dwb"] 3
-assign [instance="chromium"] 3
+assign [class="ranger"] 2
+assign [class="Firefox|Chromium|Aurora|Dwb"] 3
+assign [class="pianobar"] 6
 
 # config apps:
 for_window [instance="Browser|Places|Abp" class="Firefox|Aurora"] floating enable
 for_window [instance="Navigator" class="Firefox|Aurora"] border none
 for_window [instance="chromium" window_role="browser"] border none
+for_window [instance="chromium" window_role="pop-up"] floating enable
 for_window [class="Dwb"] border none
-for_window [instance="spacefm" window_role="file_manager"] border none
 for_window [class="Gnome-screenshot"] floating enable
-for_window [class="Phoenix"] floating enable; border normal 3
+for_window [class="Gcolor2"] floating enable
+for_window [class="Lxappearance"] floating enable
+for_window [class="Nitrogen"] floating enable
 
-# colors:
-client.focused              #543857 #543857 #FFFFFF #543857
-client.focused_inactive     #4D4D4D #4D4D4D #FFFFFF #4D4D4D
-client.unfocused            #222222 #222222 #888888 #222222
-client.urgent               #87292E #87292E #FFFFFF #87292E
+# border colors:        border: bg:     text:   indicator:
+client.focused          #543857 #543857 #FFFFFF #543857
+client.focused_inactive #4D4D4D #4D4D4D #FFFFFF #4D4D4D
+client.unfocused        #222222 #222222 #888888 #222222
+client.urgent           #87292E #87292E #FFFFFF #87292E
 
 # wm binds:
-bindsym $mod+Shift+q kill
+bindsym $mod+w kill
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
+bindsym $mod+Tab focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 bindsym $mod+Shift+Left move left 25
@@ -62,7 +72,7 @@ bindsym $mod+Shift+Right move right 25
 bindsym $mod+h split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+s floating toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 bindsym $mod+c focus child
@@ -86,10 +96,8 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
-bindsym $mod+Tab focus down
-bindsym Mod1+Tab focus right
-bindsym $mod+grave move scratchpad
-bindsym $mod+o scratchpad show
+bindsym $mod+o move scratchpad
+bindsym $mod+grave scratchpad show
 
 # resize mode:
 bindsym $mod+r mode "resize"
@@ -98,28 +106,24 @@ mode "resize" {
     bindsym Down resize grow height 10
     bindsym Up resize shrink height 10
     bindsym Right resize grow width 10
-
     bindsym Shift+Left resize shrink width 50
     bindsym Shift+Down resize grow height 50
     bindsym Shift+Up resize shrink height 50
     bindsym Shift+Right resize grow width 50
-
     bindsym $mod+Shift+Left move left 25
     bindsym $mod+Shift+Down move down 25
     bindsym $mod+Shift+Up move up 25
     bindsym $mod+Shift+Right move right 25
-
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
-# systemd mode:
-bindsym $mod+s mode "systemd"
-mode "systemd" {
+# power mode:
+bindsym $mod+p mode "power"
+mode "power" {
     bindsym 1 exec systemctl suspend; mode "default"
     bindsym 2 exec systemctl reboot; mode "default"
     bindsym 3 exec systemctl poweroff; mode "default"
-
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -130,7 +134,6 @@ mode "layout" {
     bindsym 1 layout stacking; mode "default"
     bindsym 2 layout tabbed; mode "default"
     bindsym 3 layout toggle split; mode "default"
-
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -141,7 +144,6 @@ mode "border" {
     bindsym 1 border pixel 3; mode "default"
     bindsym 2 border normal 2; mode "default"
     bindsym 3 border none; mode "default"
-
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -149,29 +151,31 @@ mode "border" {
 # i3wm mode:
 bindsym $mod+i mode "i3wm"
 mode "i3wm" {
-
-bindsym $mod+F9 reload
-bindsym $mod+F10 restart
-bindsym $mod+F11 exit
     bindsym 1 reload; mode "default"
     bindsym 2 restart; mode "default"
     bindsym 3 exit; mode "default"
-
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
+# i3bar options:
 bar {
     mode dock
+    modifier $mod
     position bottom
     font pango: Share Tech 10
     status_command ~/.bin/i3bar_exec
 
+    # bar colors:
     colors {
-        statusline          #E6E6E6
-        focused_workspace   #543857 #543857 #FFFFFF
-        active_workspace    #5F676A #5F676A #FFFFFF
-        inactive_workspace  #000000 #000000 #888888
-        urgent_workspace    #87292E #87292E #FFFFFF
+        background         #000000
+        statusline         #E6E6E6
+        separator          #000000
+
+        # workspace:       border: bg:     text:
+        focused_workspace  #543857 #543857 #FFFFFF
+        active_workspace   #5F676A #5F676A #FFFFFF
+        inactive_workspace #000000 #000000 #888888
+        urgent_workspace   #87292E #87292E #FFFFFF
     }
 }

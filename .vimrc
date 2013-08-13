@@ -13,3 +13,4 @@ colorscheme elflord
 map \ :noh <enter>
 set printoptions=paper:letter,number:yes,left:5pc
 set printfont="Envy Code R":h10
+

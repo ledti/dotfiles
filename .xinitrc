@@ -6,8 +6,10 @@ redshift -l LAT:LONG -t 6000:4800 &
 pulseaudio --start &
 dunst &
 system-config-printer-applet &
-compton -Cc -o 0.30 -l -16 -t -16 &
-conky -c "$HOME/.scripts/conkyrc_journalctl" &
+compton -c -o 0.25 -l -9 -t -9 -r 6 &
+#compton --opengl --vsync opengl-swc --paint-on-overlay -c -o 0.25 -l -9 -t -9 -r 6 &
+#conky -c "$HOME/.scripts/conkyrc_journalctl" &
 
 # launch wm:
 exec i3
+
