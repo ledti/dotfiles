@@ -1,7 +1,7 @@
 out_to_x no
 out_to_console yes
 extra_newline yes
-uppercase yes
+uppercase no
 short_units yes
 update_interval 1
 

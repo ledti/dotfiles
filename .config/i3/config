@@ -11,7 +11,7 @@ new_window pixel 3
 workspace_auto_back_and_forth yes
 
 # app binds:
-bindsym $mod+Return exec $TERMINAL
+bindsym $mod+Return exec $TERMINAL -g 667x422
 bindsym $mod+z exec j4-dmenu-desktop --dmenu='dmenu -i -fn "Envy Code R 10"'
 bindsym $mod+d exec dmenu_run -i -fn "Envy Code R 10"
 bindsym Control+Mod1+Delete exec $TERMINAL -e htop
@@ -173,8 +173,6 @@ bar {
     # bar colors:
     colors {
         background         #000000
-        statusline         #E6E6E6
-        separator          #000000
 
         # workspace:       border: bg:     text:
         focused_workspace  #543857 #543857 #FFFFFF

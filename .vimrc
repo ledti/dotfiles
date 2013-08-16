@@ -2,14 +2,12 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set smarttab
-set number
 set hlsearch
 set ignorecase
 set smartcase
+set nocompatible
 syntax on
-filetype plugin indent on
-set background=dark
-colorscheme elflord
+filetype on
 map \ :noh <enter>
 set printoptions=paper:letter,number:yes,left:5pc
 set printfont="Envy Code R":h10
