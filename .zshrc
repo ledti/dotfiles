@@ -1,3 +1,6 @@
+# source files:
+source $HOME/.scripts/bash/private
+
 # history file:
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -10,7 +13,6 @@ setopt banghist
 setopt incappendhistory
 setopt correct
 setopt completealiases
-#setopt null_glob
 
 autoload -Uz compinit
 compinit
@@ -35,25 +37,7 @@ alias sp="sudo pacman" && compdef sp=pacman
 alias spu="sudo pacman -Syu" && compdef spu=pacman
 alias spc="sudo pacman -Sc"
 alias op="$EDITOR"
-alias sop="sudo $EDITOR"
+alias sop="sudoedit"
 alias co="cower -c -f -t $HOME/builds" && compdef co=cower
 alias pb="pbget --dir $HOME/builds"
-
-sdm() {
-
-    # create device aliases:
-    for device in /dev/sd[^ab]*(N); do
-        alias ${device#/dev/}m="udisksctl mount -b $device"
-        alias ${device#/dev/}u="udisksctl unmount -b $device"
-    done
-
-#    local device
-#    unalias -m "sd[[:alpha:]]*"
-#    device=(/dev/sd[[:alpha:]]*)
-#    device=${device#/dev/}
-#    echo $device
-}
-
-sdm
-#unset -f sdm
 

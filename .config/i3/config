@@ -10,6 +10,18 @@ workspace_layout stacking
 new_window pixel 3
 workspace_auto_back_and_forth yes
 
+# assign workspaces:
+workspace 1 output HDMI-0
+workspace 2 output HDMI-0
+workspace 3 output HDMI-0
+workspace 4 output HDMI-0
+workspace 5 output HDMI-0
+workspace 6 output DVI-0
+workspace 7 output DVI-0
+workspace 8 output DVI-0
+workspace 9 output DVI-0
+workspace 10 output DVI-0
+
 # app binds:
 bindsym $mod+Return exec $TERMINAL -g 667x422
 bindsym $mod+z exec j4-dmenu-desktop --dmenu='dmenu -i -fn "Envy Code R 10"'
