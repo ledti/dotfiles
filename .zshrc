@@ -28,8 +28,7 @@ zstyle ":completion:*" menu select
 zstyle ":completion:*" matcher-list "" "m:{a-zA-Z}={A-Za-z}"
 
 # set prompt:
-PROMPT=" %* %{$fg_no_bold[green]%}%n%{$reset_color%}@%{$fg_no_bold[magenta]%}%m%{$reset_color%}%1(j. %j.) %{$fg_no_bold[blue]%}%~%{$reset_color%} %# "
-RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
+PROMPT="%{$fg_no_bold[green]%}%n%{$reset_color%}@%{$fg_no_bold[magenta]%}%m%{$reset_color%}%1(j. [%j].) %{$fg_bold[cyan]%}%~%{$reset_color%} %# "
 
 # set keybinds:
 bindkey "^R" history-incremental-search-backward
@@ -49,3 +48,4 @@ alias sop="sudoedit" && compdef sop="sudoedit"
 alias co="cower -c -f -t $HOME/builds" && compdef co="cower"
 alias pb="pbget --dir $HOME/builds"
 alias root="sudo -i"
+alias inbound="ss -putr"
