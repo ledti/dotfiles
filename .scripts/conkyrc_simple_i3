@@ -1,3 +1,6 @@
+# https://github.com/ledti/dotfiles/blob/master/.scripts/conkyrc_simple_i3
+# i3bar compatible conky configuration:
+
 out_to_x no
 out_to_console yes
 short_units yes
@@ -6,10 +9,15 @@ update_interval 1
 TEXT
 
 [\
-# Kernel:
-{"full_text":"KERNEL","color":"\#888888","separator":false,"separator_block_width":6},\
-{"full_text":"${kernel}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
-# Volume:
+# Audacious:
+{"full_text":"${if_running audacious}"},\
+{"full_text":"MUSIC","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${audacious_title 150}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+{"full_text":"(${audacious_position}","color":"\#AAF096","separator":false,"separator_block_width":0},\
+{"full_text":"—","color":"\#EEEEEE","separator":false,"separator_block_width":0},\
+{"full_text":"${audacious_length})","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+{"full_text":"${endif}"},\
+# Volume (pamixer):
 #{"full_text":"${if_running pulseaudio}${if_existing /usr/bin/pamixer}"},\
 #{"full_text":"VOLUME","color":"\#888888","separator":false,"separator_block_width":6},\
 #{"full_text":"${if_match "${exec pamixer --get-mute}"=="false"}"},\
@@ -18,6 +26,12 @@ TEXT
 #{"full_text":"${else}"},\
 #{"full_text":"MUTE","color":"\#FF3333","separator":false,"separator_block_width":6},\
 #{"full_text":"${endif}${endif}${endif}"},\
+# Kernel:
+{"full_text":"KERNEL","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${kernel}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+# Uptime:
+{"full_text":"UPTIME","color":"\#888888","separator":false,"separator_block_width":6},\
+{"full_text":"${uptime_short}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
 # CPU temperature:
 {"full_text":"CPU TEMP","color":"\#888888","separator":false,"separator_block_width":6},\
 {"full_text":"${if_match ${hwmon 2 temp 2}<45}${hwmon 2 temp 2}","color":"\#AAF096","separator":false,"separator_block_width":0},\

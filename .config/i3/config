@@ -67,6 +67,7 @@ for_window [class="Gnome-screenshot"] floating enable
 for_window [class="Gcolor2"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Nitrogen"] floating enable
+for_window [class="grafx2"] floating enable
 
 # border colors:        border: bg:     text:   indicator:
 client.focused          #543857 #543857 #FFFFFF #543857
