@@ -9,7 +9,7 @@ update_interval 2
 TEXT
 
 [\
-# Audacious:
+# Audacious (requires conky package built with '--enable-audacious'):
 {"full_text":"${if_running audacious}"},\
 {"full_text":"MUSIC","color":"\#888888","separator":false,"separator_block_width":6},\
 {"full_text":"${audacious_title 150}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
@@ -17,7 +17,7 @@ TEXT
 {"full_text":"—","color":"\#EEEEEE","separator":false,"separator_block_width":0},\
 {"full_text":"${audacious_length})","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
 {"full_text":"${endif}"},\
-# Volume (pamixer):
+# Volume (pulseaudio) (requires pamixer package):
 {"full_text":"${if_running pulseaudio}${if_existing /usr/bin/pamixer}"},\
 {"full_text":"VOLUME","color":"\#888888","separator":false,"separator_block_width":6},\
 {"full_text":"${if_match "${execi 2 pamixer --get-mute}"=="false"}"},\
@@ -32,7 +32,7 @@ TEXT
 # Uptime:
 {"full_text":"UPTIME","color":"\#888888","separator":false,"separator_block_width":6},\
 {"full_text":"${uptime_short}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
-# CPU temperature:
+# CPU temperature (requires lm_sensors package, change 'hwmon # temp #' to suit your needs):
 {"full_text":"CPU TEMP","color":"\#888888","separator":false,"separator_block_width":6},\
 {"full_text":"${if_match ${hwmon 2 temp 2}<45}${hwmon 2 temp 2}","color":"\#AAF096","separator":false,"separator_block_width":0},\
 {"full_text":"${else}"},\
@@ -44,7 +44,7 @@ TEXT
 {"full_text":"${else}"},\
 {"full_text":"${endif}${endif}${endif}${endif}"},\
 {"full_text":"°C","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
-# GFX temperature:
+# GFX temperature (requires lm_sensors package, change 'hwmon temp #' to suit your needs):
 {"full_text":"GFX TEMP","color":"\#888888","separator":false,"separator_block_width":6},\
 {"full_text":"${if_match ${hwmon temp 1}<50}${hwmon temp 1}","color":"\#AAF096","separator":false,"separator_block_width":0},\
 {"full_text":"${else}"},\
