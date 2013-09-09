@@ -48,6 +48,7 @@ exec $TERMINAL -c ranger -e ranger
 exec $TERMINAL -c weechat -e weechat-curses
 exec $TERMINAL -c profanity -e profanity
 exec $BROWSER
+exec audacious
 exec i3-msg workspace 3
 
 # assign apps:
