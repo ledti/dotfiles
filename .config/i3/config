@@ -53,6 +53,7 @@ exec i3-msg workspace 3
 
 # assign apps:
 assign [instance="ranger"] 2
+assign [instance="Sunflower"] 2
 assign [class="Firefox|Chromium|Aurora|Dwb"] 3
 assign [instance="pianobar"] 6
 assign [instance="weechat"] 9
