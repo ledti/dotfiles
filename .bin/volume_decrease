@@ -2,4 +2,3 @@
 
 pamixer --unmute
 pamixer --allow-boost --decrease 10
-

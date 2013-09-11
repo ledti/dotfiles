@@ -2,4 +2,3 @@
 
 pacman_updates=$(checkupdates)
 printf ${#pacman_updates[@]}
-

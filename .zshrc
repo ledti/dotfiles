@@ -8,8 +8,8 @@
 
 # set history options:
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=2500
+SAVEHIST=2500
 
 # set zsh options:
 setopt autocd
@@ -45,7 +45,7 @@ alias spr="sudo pacman -Rsn" && compdef spr="pacman"
 alias spc="sudo pacman -Sc" && compdef spc="pacman"
 alias op="$EDITOR" && compdef op="$EDITOR"
 alias sop="sudoedit" && compdef sop="sudoedit"
-alias co="cower -c -f -t $HOME/builds" && compdef co="cower"
-alias pb="pbget --dir $HOME/builds"
+alias co="cower -c -f -t $HOME/Builds" && compdef co="cower"
+alias pb="pbget --dir $HOME/Builds"
 alias root="sudo -i"
 alias inbound="ss -putr"

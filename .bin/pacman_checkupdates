@@ -5,4 +5,3 @@ if [[ $(checkupdates) ]]; then
 else
     notify-send "System Updates" "There are no updates."
 fi
-
