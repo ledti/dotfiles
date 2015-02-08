@@ -1,6 +1,0 @@
-screenshot-format=png
-screenshot-template=%04n-%P
-
-vo="opengl-hq"
-osd-font="Averia Sans Libre"
-sub-text-font="Averia Sans Libre"

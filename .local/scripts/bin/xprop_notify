@@ -1,0 +1,3 @@
+#!/bin/bash
+
+notify-send "Window Information" "$(xprop -notype WM_CLASS WM_WINDOW_ROLE)"

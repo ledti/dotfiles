@@ -6,8 +6,13 @@ set hlsearch
 set ignorecase
 set smartcase
 set nocompatible
+set number
+set t_Co=256
+set background=dark
+colorscheme gruvbox
 syntax on
-filetype on
+highlight Normal ctermbg=NONE
+highlight nonText ctermbg=NONE
+filetype indent plugin on
+vnoremap <C-c> "+y
 map \ :noh <enter>
-set printoptions=paper:letter,number:yes,left:5pc
-set printfont="Envy Code R":h10

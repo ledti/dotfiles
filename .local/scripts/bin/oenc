@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for i in *.flac; do
+    opusenc --bitrate 256 --discard-pictures "$i" "${i%.flac}.opus"
+done
+
+mkdir -p "${PWD#/mnt/storage/music/}"
+mv *.opus "${PWD#/mnt/storage/music/}"

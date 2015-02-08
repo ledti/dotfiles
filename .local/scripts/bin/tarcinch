@@ -1,0 +1,175 @@
+#!/bin/bash
+
+# tarcinch: simple tarsnap backups with bash.
+# run with a systemd.timer, cron, or manually.
+# requires: bash, coreutils, grep, and tarsnap.
+
+# https://gist.github.com/ledti/b8bc6bd0200b7c91ea58
+# last modified: 2015/02/05
+
+# * monthly backups on the first of the month (if enabled).
+#    - if day of month > 1 and ≤ 21 and no current monthly backup, creates backup.
+# * weekly backups on mondays (if enabled).
+#    - if day of week is > 1 and ≤ 4 and no current weekly backup, creates backup.
+# * daily backups otherwise (if enabled).
+
+# archive format: $PREFIX-$TYPE-$(date +%F-%W-%u), see 'man date'
+#  e.g. $PREFIX-$TYPE-YEAR-MONTH-DAY-WEEK-DAYS
+#  e.g. tarcinch-DAILY-2015-02-04-05-3
+
+# ---
+
+# base tarsnap command:
+# e.g. "tarsnap".
+TARSNAP="tarsnap --configfile $HOME/.config/tarsnap/tarsnaprc"
+
+# all stored tarsnap archives:
+# * don't change unless you know what you're doing.
+ARCHIVES=$($TARSNAP --list-archives)
+
+# file containing list of filenames to backup to tarsnap:
+# i.e. 'tarsnap -c -f archivename -T $LIST', see 'man tarsnap'
+LIST="$HOME/.config/tarsnap/synclist"
+
+# prefix for all backups:
+# e.g. "tarcinch".
+PREFIX="$HOSTNAME"
+
+# number of daily backups to preserve:
+# if set to 0, disable daily backups.
+KD="6"
+
+# number of weekly backups to preserve:
+# if set to 0, disable weekly backups.
+KW="4"
+
+# number of monthly backups to preserve:
+# if set to 0, disable monthly backups.
+KM="2"
+
+# make tarcinch slightly verbose:
+# * does not affect tarsnap's output.
+# anything but "true" disables verbosity.
+VERBOSE="true"
+
+# ---
+
+# preserves a set number of backups:
+PRESERVE() {
+    # count the number of backups and if it's ≤ the preserved amount, then:
+    if [[ $(echo $ARCHIVES | grep $PREFIX-$TYPE | wc -l) -le $KEEP ]]; then
+        # do nothing and exit:
+        exit
+    fi
+}
+
+# prunes older backups:
+PRUNE() {
+    # determine the oldest tarsnap archive:
+    OLDEST=$(echo $ARCHIVES | grep $PREFIX-$TYPE | sort | head -n 1)
+    # report procedure if $VERBOSE is true:
+    if [[ $VERBOSE == "true" ]]; then
+        echo "Deleting backup: $OLDEST"
+    fi
+    # delete the oldest tarsnap archive:
+    $TARSNAP -d -f $OLDEST
+}
+
+# creates a daily backup:
+DAILY_BACKUP() {
+    TYPE="DAILY"
+    KEEP="$KD"
+    # report procedure if $VERBOSE is true:
+    if [[ $VERBOSE == "true" ]]; then
+        echo "Creating backup: $PREFIX-$TYPE-$(date +%F-%W-%u)"
+    fi
+    # create daily backup:
+    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%W-%u) -T $LIST
+}
+
+# creates a weekly backup:
+WEEKLY_BACKUP() {
+    TYPE="WEEKLY"
+    KEEP="$KW"
+    # report procedure if $VERBOSE is true:
+    if [[ $VERBOSE == "true" ]]; then
+        echo "Creating backup: $PREFIX-$TYPE-$(date +%F-%W-%u)"
+    fi
+    # create weekly backup:
+    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%W-%u) -T $LIST
+}
+
+# creates a monthly backup:
+MONTHLY_BACKUP() {
+    TYPE="MONTHLY"
+    KEEP="$KM"
+    # report procedure if $VERBOSE is true:
+    if [[ $VERBOSE == "true" ]]; then
+        echo "Creating backup: $PREFIX-$TYPE-$(date +%F-%W-%u)"
+    fi
+    # create monthly backup:
+    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%W-%u) -T $LIST
+}
+
+# determines if there was a previous backup created today:
+ANY_CHECK() {
+    # count the number of backups made today:
+    ACHK=$(echo $ARCHIVES | grep $PREFIX-.*-$(date +%F)-.*-.* | wc -l)
+    # if $ACHK ≥ 1, then:
+    if [[ $ACHK -ge 1 ]]; then
+        # report result if $VERBOSE is true and exit:
+        if [[ $VERBOSE == "true" ]]; then
+            echo "$ACHK previous backup(s) created today, aborting..."
+        fi
+        exit
+    fi
+}
+
+# insure the creation of a monthly backup if it's not too late into the month and $KM ≥ 1:
+MONTHLY_CHECK() {
+    # count the number of monthly backups made this month:
+    MCHK=$(echo $ARCHIVES | grep $PREFIX-MONTHLY-$(date +%Y)-$(date +%m)-.*-.*-.* | wc -l)
+    # if $KM ≥ 1 and $MCHK < 1 and the day of the month is > 1 and also ≤ 21, then:
+    if [[ $KM -ge 1 && $MCHK -lt 1 && $(date +%-d) -gt 1 && $(date +%-d) -le 21 ]]; then
+        # create a monthly backup and exit:
+        MONTHLY_BACKUP
+        exit
+    fi
+}
+
+# insure the creation of a weekly backup if it's not too late into the week and $KW ≥ 1:
+WEEKLY_CHECK() {
+    # count the number of weekly backups made this week:
+    WCHK=$(echo $ARCHIVES | grep $PREFIX-WEEKLY-$(date +%Y)-.*-.*-$(date +%W)-.* | wc -l)
+    # if $KW ≥ 1 and $WCHK < 1 and the day of the week is > 1 and also ≤ 4, then:
+    if [[ $KW -ge 1 && $WCHK -lt 1 && $(date +%u) -gt 1 && $(date +%u) -le 4 ]]; then
+        # create a weekly backup and exit:
+        WEEKLY_BACKUP
+        exit
+    fi
+}
+
+# in order, run the following:
+ANY_CHECK
+MONTHLY_CHECK
+WEEKLY_CHECK
+
+ # if $KM ≥ 1 and it's the first day of the month, then:
+if [[ $KM -ge 1 && $(date +%-d) -eq 1 ]]; then
+    MONTHLY_BACKUP
+    PRESERVE
+    PRUNE
+# if $KW ≥ 1 and it's the first day of the week, then:
+elif [[ $KW -ge 1 && $(date +%u) -eq 1 ]]; then
+    WEEKLY_BACKUP
+    PRESERVE
+    PRUNE
+# if $KD ≥ 1, then:
+elif [[ $KD -ge 1 ]]; then
+    DAILY_BACKUP
+    PRESERVE
+    PRUNE
+# report result if $KD and $KW and $KM are disabled and $VERBOSE is true:
+elif [[ $KD -lt 1 && $KW -lt 1 && $KM -lt 1 && $VERBOSE == "true" ]]; then
+    echo "$(( $KD + $KW + $KM )) backup(s) are set to be preserved, aborting..."
+fi
