@@ -5,7 +5,7 @@
 # requires: bash, coreutils, grep, and tarsnap.
 
 # https://gist.github.com/ledti/b8bc6bd0200b7c91ea58
-# last modified: 2015/02/05
+# last modified: 2015/02/08
 
 # * monthly backups on the first of the month (if enabled).
 #    - if day of month > 1 and ≤ 21 and no current monthly backup, creates backup.
