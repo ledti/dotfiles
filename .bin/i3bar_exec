@@ -1,7 +1,0 @@
-#!/bin/bash
-
-echo '{"version":1}'
-echo '['
-echo '[],'
-
-exec conky -p 5 -c $HOME/.scripts/conkyrc_simple_i3

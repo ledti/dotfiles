@@ -1,4 +1,0 @@
-#!/bin/bash
-
-pamixer --unmute
-pamixer --allow-boost --increase 10
