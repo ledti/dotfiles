@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# default settings:
+xsetwacom --set "Wacom Intuos PT S Pen stylus" MapToOutput "DVI-0"
+xsetwacom --set "Wacom Intuos PT S Pen eraser" MapToOutput "DVI-0"
+xsetwacom --set "Wacom Intuos PT S Pad pad" MapToOutput "DVI-0"
+xsetwacom --set "Wacom Intuos PT S Finger touch" MapToOutput "DVI-0"
+xsetwacom --set "Wacom Intuos PT S Pad pad" Button 9 "key +ctrl +z"
+xsetwacom --set "Wacom Intuos PT S Pad pad" Button 8 "key +ctrl +shift +z"
+xsetwacom --set "Wacom Intuos PT S Pad pad" Button 3 "key +e"
+xsetwacom --set "Wacom Intuos PT S Pad pad" Button 1 "key ctrl"
+
+# map tablet to a smaller portion of the screen:
+xsetwacom --set "Wacom Intuos PT S Pen stylus" Area "-1000 -1000 16200 10500"
+xsetwacom --set "Wacom Intuos PT S Pen eraser" Area "-1000 -1000 16200 10500"

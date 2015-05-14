@@ -3,7 +3,7 @@
 out_to_x no
 out_to_console yes
 short_units yes
-update_interval 2
+update_interval 1
 
 TEXT
 
@@ -26,8 +26,8 @@ TEXT
 {"full_text":"MUTE","color":"\#FF3333","separator":false,"separator_block_width":6},\
 {"full_text":"${endif}${endif}${endif}"},\
 # Kernel:
-{"full_text":"KE","color":"\#363636","separator":false,"separator_block_width":6},\
-{"full_text":"${kernel}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+#{"full_text":"KE","color":"\#363636","separator":false,"separator_block_width":6},\
+#{"full_text":"${kernel}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
 # Uptime:
 {"full_text":"UT","color":"\#363636","separator":false,"separator_block_width":6},\
 {"full_text":"${uptime_short}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
@@ -77,9 +77,9 @@ TEXT
 {"full_text":"${endif}${endif}${endif}"},\
 # Memory:
 {"full_text":"MM","color":"\#363636","separator":false,"separator_block_width":6},\
-{"full_text":"${if_match ${memperc}<30}${memeasyfree}","color":"\#AAF096","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${memperc}<50}${memeasyfree}","color":"\#AAF096","separator":false,"separator_block_width":6},\
 {"full_text":"${else}"},\
-{"full_text":"${if_match ${memperc}<60}${memeasyfree}","color":"\#F0DC64","separator":false,"separator_block_width":6},\
+{"full_text":"${if_match ${memperc}<70}${memeasyfree}","color":"\#F0DC64","separator":false,"separator_block_width":6},\
 {"full_text":"${else}"},\
 {"full_text":"${if_match ${memperc}<85}${memeasyfree}","color":"\#FF9933","separator":false,"separator_block_width":6},\
 {"full_text":"${else}"},\
@@ -98,7 +98,7 @@ TEXT
 {"full_text":"%","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
 # Date:
 {"full_text":"DA","color":"\#363636","separator":false,"separator_block_width":6},\
-{"full_text":"${time %F}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
+{"full_text":"${time %F-%V-%u}","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
 # Time:
 {"full_text":"TM","color":"\#363636","separator":false,"separator_block_width":6},\
 {"full_text":"${time %r}","color":"\#EEEEEE","separator":false}\

@@ -1,3 +1,14 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'Yggdroot/indentLine'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-surround'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'scrooloose/syntastic'
+Plug 'morhetz/gruvbox'
+
+call plug#end()
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -10,9 +21,8 @@ set number
 set t_Co=256
 set background=dark
 colorscheme gruvbox
-syntax on
 highlight Normal ctermbg=NONE
 highlight nonText ctermbg=NONE
+syntax on
 filetype indent plugin on
 vnoremap <C-c> "+y
-map \ :noh <enter>
