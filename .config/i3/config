@@ -27,11 +27,11 @@ workspace 11:alt output HDMI-0
 
 # app binds:
 bindsym $mod+Return exec $TERMINAL
-bindsym $mod+d exec dmenu_run -sb "#58252B" -sf "#F4BF75" -i -dim .5 -p open: -fn "Share-10"
-bindsym $mod+z exec passmenu -sb "#254358" -sf "#F4BF75" -i -dim .5 -p open: -fn "Share-10"
+bindsym $mod+d exec --no-startup-id rofi -show "run" -font "Share 10" -bw "3"
+bindsym $mod+z exec --no-startup-id passmenu -p "copy:" -font "Share 10" -bw "3"
 bindsym Control+Mod1+Delete exec $TERMINAL -t htop -e htop
-bindsym $mod+Print exec gnome-screenshot -i
-bindsym $mod+Shift+Print exec scrot -e "mv $f $HOME/Pictures"
+bindsym $mod+Print exec --no-startup-id maim -d 3 ~/images/screenshots/$(date +%F-%T).png
+bindsym $mod+Mod1+Print exec --no-startup-id maim -s ~/images/screenshots/$(date +%F-%T).png
 bindsym --release $mod+F1 exec --no-startup-id xprop_notify
 bindsym $mod+F2 exec --no-startup-id pacman_checkupdates
 bindsym XF86Explorer exec $TERMINAL -t ranger --name ranger -e ranger
@@ -39,11 +39,12 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id volume_increase
 bindsym XF86AudioLowerVolume exec --no-startup-id volume_decrease
 bindsym XF86AudioMute exec --no-startup-id ponymix toggle
 bindsym XF86Tools exec $TERMINAL -t pianobar --name pianobar -e pianobar
-bindsym XF86Calculator exec gnome-calculator
-bindsym $mod+Tab exec --no-startup-id rofi -show "window" -font "Share 10" -opacity "95" -bw "3" -bc "#352840" -bg "#3F3F3F" -fg "#F2F2F2" -hlbg "#58252B" -hlfg "#F4BF75"
+bindsym XF86Calculator exec galculator
+bindsym $mod+Tab exec --no-startup-id rofi -show "window" -font "Share 10" -bw "3"
 
 # autostart apps:
 exec chromium
+exec wacom_set
 exec i3-msg workspace 3:web
 
 # assign apps:
@@ -70,7 +71,7 @@ for_window [class="Gcolor3"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Nitrogen"] floating enable
 for_window [class="grafx2"] floating enable
-for_window [class="Gcalctool"] floating enable
+for_window [class="Galculator"] floating enable
 for_window [class="Simplescreenrecorder"] floating enable
 for_window [class="Wine"] floating enable
 for_window [class="Steam"] floating enable
@@ -78,7 +79,6 @@ for_window [class="Gajim"] floating enable
 for_window [class="t-engine"] floating enable
 for_window [class="Pystopwatch"] floating enable
 for_window [class="Angband"] floating enable
-#for_window [class="Termite"] border normal
 
 # border colors:        border: bg:     text:   indicator:
 client.focused          #493757 #453452 #FFFFFF #523445
@@ -123,6 +123,7 @@ bindsym $mod+Shift+6 move container to workspace 6:mus
 bindsym $mod+Shift+7 move container to workspace 7:vid
 bindsym $mod+Shift+8 move container to workspace 8:ext
 bindsym $mod+Shift+9 move container to workspace 9:irc
+bindsym $mod+Shift+10 move container to workspace 10:mes
 bindsym $mod+Shift+minus move container to workspace 11:alt
 bindsym $mod+o move scratchpad
 bindsym $mod+grave scratchpad show

@@ -5,7 +5,7 @@
 # requires: bash, coreutils, grep, and tarsnap.
 
 # https://gist.github.com/ledti/b8bc6bd0200b7c91ea58
-# last modified: 2015/02/08
+# last modified: 2015/02/17
 
 # * monthly backups on the first of the month (if enabled).
 #    - if day of month > 1 and ≤ 21 and no current monthly backup, creates backup.
@@ -13,7 +13,7 @@
 #    - if day of week is > 1 and ≤ 4 and no current weekly backup, creates backup.
 # * daily backups otherwise (if enabled).
 
-# archive format: $PREFIX-$TYPE-$(date +%F-%W-%u), see 'man date'
+# archive format: $PREFIX-$TYPE-$(date +%F-%V-%u), see 'man date'
 #  e.g. $PREFIX-$TYPE-YEAR-MONTH-DAY-WEEK-DAYS
 #  e.g. tarcinch-DAILY-2015-02-04-05-3
 
@@ -56,8 +56,8 @@ VERBOSE="true"
 
 # preserves a set number of backups:
 PRESERVE() {
-    # count the number of backups and if it's ≤ the preserved amount, then:
-    if [[ $(echo $ARCHIVES | grep $PREFIX-$TYPE | wc -l) -le $KEEP ]]; then
+    # count the number of backups and if it's < the preserved amount, then:
+    if [[ $(echo "$ARCHIVES" | grep $PREFIX-$TYPE | wc -l) -lt $KEEP ]]; then
         # do nothing and exit:
         exit
     fi
@@ -66,7 +66,7 @@ PRESERVE() {
 # prunes older backups:
 PRUNE() {
     # determine the oldest tarsnap archive:
-    OLDEST=$(echo $ARCHIVES | grep $PREFIX-$TYPE | sort | head -n 1)
+    OLDEST=$(echo "$ARCHIVES" | grep $PREFIX-$TYPE | sort | head -n 1)
     # report procedure if $VERBOSE is true:
     if [[ $VERBOSE == "true" ]]; then
         echo "Deleting backup: $OLDEST"
@@ -81,10 +81,10 @@ DAILY_BACKUP() {
     KEEP="$KD"
     # report procedure if $VERBOSE is true:
     if [[ $VERBOSE == "true" ]]; then
-        echo "Creating backup: $PREFIX-$TYPE-$(date +%F-%W-%u)"
+        echo "Creating backup: $PREFIX-$TYPE-$(date +%F-%V-%u)"
     fi
     # create daily backup:
-    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%W-%u) -T $LIST
+    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%V-%u) -T $LIST
 }
 
 # creates a weekly backup:
@@ -93,10 +93,10 @@ WEEKLY_BACKUP() {
     KEEP="$KW"
     # report procedure if $VERBOSE is true:
     if [[ $VERBOSE == "true" ]]; then
-        echo "Creating backup: $PREFIX-$TYPE-$(date +%F-%W-%u)"
+        echo "Creating backup: $PREFIX-$TYPE-$(date +%F-%V-%u)"
     fi
     # create weekly backup:
-    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%W-%u) -T $LIST
+    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%V-%u) -T $LIST
 }
 
 # creates a monthly backup:
@@ -105,16 +105,16 @@ MONTHLY_BACKUP() {
     KEEP="$KM"
     # report procedure if $VERBOSE is true:
     if [[ $VERBOSE == "true" ]]; then
-        echo "Creating backup: $PREFIX-$TYPE-$(date +%F-%W-%u)"
+        echo "Creating backup: $PREFIX-$TYPE-$(date +%F-%V-%u)"
     fi
     # create monthly backup:
-    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%W-%u) -T $LIST
+    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%V-%u) -T $LIST
 }
 
 # determines if there was a previous backup created today:
 ANY_CHECK() {
     # count the number of backups made today:
-    ACHK=$(echo $ARCHIVES | grep $PREFIX-.*-$(date +%F)-.*-.* | wc -l)
+    ACHK=$(echo "$ARCHIVES" | grep $PREFIX-.*-$(date +%F)-.*-.* | wc -l)
     # if $ACHK ≥ 1, then:
     if [[ $ACHK -ge 1 ]]; then
         # report result if $VERBOSE is true and exit:
@@ -128,7 +128,7 @@ ANY_CHECK() {
 # insure the creation of a monthly backup if it's not too late into the month and $KM ≥ 1:
 MONTHLY_CHECK() {
     # count the number of monthly backups made this month:
-    MCHK=$(echo $ARCHIVES | grep $PREFIX-MONTHLY-$(date +%Y)-$(date +%m)-.*-.*-.* | wc -l)
+    MCHK=$(echo "$ARCHIVES" | grep $PREFIX-MONTHLY-$(date +%Y)-$(date +%m)-.*-.*-.* | wc -l)
     # if $KM ≥ 1 and $MCHK < 1 and the day of the month is > 1 and also ≤ 21, then:
     if [[ $KM -ge 1 && $MCHK -lt 1 && $(date +%-d) -gt 1 && $(date +%-d) -le 21 ]]; then
         # create a monthly backup and exit:
@@ -140,7 +140,7 @@ MONTHLY_CHECK() {
 # insure the creation of a weekly backup if it's not too late into the week and $KW ≥ 1:
 WEEKLY_CHECK() {
     # count the number of weekly backups made this week:
-    WCHK=$(echo $ARCHIVES | grep $PREFIX-WEEKLY-$(date +%Y)-.*-.*-$(date +%W)-.* | wc -l)
+    WCHK=$(echo "$ARCHIVES" | grep $PREFIX-WEEKLY-$(date +%Y)-.*-.*-$(date +%V)-.* | wc -l)
     # if $KW ≥ 1 and $WCHK < 1 and the day of the week is > 1 and also ≤ 4, then:
     if [[ $KW -ge 1 && $WCHK -lt 1 && $(date +%u) -gt 1 && $(date +%u) -le 4 ]]; then
         # create a weekly backup and exit:
