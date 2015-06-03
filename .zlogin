@@ -5,6 +5,6 @@
 
 # startx at login if vt1:
 if [[ -z $DISPLAY && $XDG_VTNR -eq 1 && $USER != root ]]; then
-    startx
+    xinit -- vt1 -keeptty &> $HOME/.xsession_log
     logout
 fi
