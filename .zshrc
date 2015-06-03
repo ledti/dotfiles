@@ -1,23 +1,19 @@
 #!/bin/zsh
 
-# check interactive:
+# if not running interactively, don't do anything:
 [[ $- != *i* ]] && return
 
-# source files:
-. "$HOME/.scripts/bash/private"
-
 # set history options:
-HISTFILE=~/.histfile
-HISTSIZE=2500
-SAVEHIST=2500
+HISTFILE="$HOME/.zhistory"
+HISTSIZE="5000"
+SAVEHIST="5000"
 
 # set zsh options:
 setopt autocd
-setopt extendedglob
 setopt banghist
-setopt incappendhistory
 setopt correct
-setopt completealiases
+setopt extendedglob
+setopt incappendhistory
 
 autoload -U compinit colors
 compinit
@@ -37,15 +33,31 @@ bindkey "^[[B" history-search-forward
 
 # set aliases:
 alias c="clear"
+alias clearmem="echo 'echo 3 > /proc/sys/vm/drop_caches' | sudo sh"
+alias co="cower -c -f -t $HOME/builds"
+alias cp="cp -i"
+alias df="df -h"
+alias du="du -sch"
 alias e="exit"
-alias p="pacman" && compdef p="pacman"
-alias sp="sudo pacman" && compdef sp="pacman"
-alias spu="sudo pacman -Syu" && compdef spu="pacman"
-alias spr="sudo pacman -Rsn" && compdef spr="pacman"
-alias spc="sudo pacman -Sc" && compdef spc="pacman"
-alias op="$EDITOR" && compdef op="$EDITOR"
-alias sop="sudoedit" && compdef sop="sudoedit"
-alias co="cower -c -f -t $HOME/Builds" && compdef co="cower"
-alias pb="pbget --dir $HOME/Builds"
-alias root="sudo -i"
+alias grep="grep --color=auto"
+alias histkill="history -c && history -w"
 alias inbound="ss -putr"
+alias lf="lsblk -f"
+alias ln="ln -i"
+alias ls="ls -1 --color=auto"
+alias mv="mv -i"
+alias op="vim"
+alias p="pacman"
+alias pb="pbget --dir $HOME/builds"
+alias perm="stat -c %a"
+alias rm="rm -I"
+alias root="sudo -i"
+alias service="sudo systemctl"
+alias sop="sudo $EDITOR"
+alias sp="sudo pacman"
+alias spc="paccache -v -r -u -k 0"
+alias spi="sudo pacman -S"
+alias spr="sudo pacman -Rsn"
+alias spu="sudo pacman -Syu"
+alias syschk="systemctl --failed && journalctl -p 0..3 -xn"
+alias tarsnap="tarsnap --configfile $HOME/.config/tarsnap/tarsnaprc"
