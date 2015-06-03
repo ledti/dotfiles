@@ -26,7 +26,7 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export SUDO_EDITOR="$EDITOR"
 export TERMINAL="termite"
 export TERMCMD="$TERMINAL"
-export XDG_CURRENT_DESKTOP="gnome"
+export QT_STYLE_OVERRIDE="breeze"
 export _JAVA_OPTIONS="-Dswing.aatext=true"
 
 # set aliases:
