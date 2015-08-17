@@ -29,17 +29,19 @@ PROMPT="%{$fg_no_bold[green]%}%n%{$reset_color%}@%{$fg_no_bold[magenta]%}%m%{$re
 
 # set keybinds:
 bindkey "^R" history-incremental-search-backward
-bindkey "^[[A" history-search-backward
-bindkey "^[[B" history-search-forward
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 # set aliases:
 alias c="clear"
 alias clearmem="echo 'echo 3 > /proc/sys/vm/drop_caches' | sudo sh"
-alias co="cower -c -f -t $HOME/builds" && compdef co=cower
+alias co="cower -c -f -t $HOME/builds/arch" && compdef co=cower
 alias cp="cp -i"
+alias decrypt="gpg"
 alias df="df -h"
 alias du="du -sch"
 alias e="exit"
+alias encrypt="gpg -c"
 alias grep="grep --color=auto"
 alias histkill="history -c && history -w"
 alias inbound="ss -putr"
@@ -49,15 +51,15 @@ alias ls="ls -1 --color=auto"
 alias mv="mv -i"
 alias op="vim"
 alias p="pacman" && compdef p=pacman
-alias pb="pbget --dir $HOME/builds"
-alias perm="stat -c %a"
+alias pb="pbget --dir $HOME/builds/arch"
+alias perm="stat -c %a %n"
 alias rm="rm -I"
-alias root="sudo -i"
+alias root="sudo -Es"
 alias service="sudo systemctl" && compdef service=systemctl
-alias sop="sudo $EDITOR"
+alias sop="sudo -Es $EDITOR"
 alias sp="sudo pacman" && compdef sp=pacman
 alias spc="paccache -v -r -u -k 0"
-alias spi="sudo pacman -S" 
+alias spi="sudo pacman -S"
 alias spr="sudo pacman -Rsn"
 alias spu="sudo pacman -Syu"
 alias syschk="systemctl --failed && journalctl -p 0..3 -xn"

@@ -6,6 +6,10 @@ Plug 'tpope/vim-surround'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'scrooloose/syntastic'
 Plug 'morhetz/gruvbox'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-sensible'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-sleuth'
 
 call plug#end()
 
@@ -18,6 +22,7 @@ set ignorecase
 set smartcase
 set nocompatible
 set number
+set pastetoggle=<F2>
 set t_Co=256
 set background=dark
 colorscheme gruvbox

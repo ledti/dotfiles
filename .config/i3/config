@@ -1,5 +1,3 @@
-# i3 config file (v4)
-
 # i3 options:
 set $mod Mod4
 font pango: Share 10
@@ -7,61 +5,45 @@ floating_modifier $mod
 default_orientation vertical
 hide_edge_borders both
 workspace_layout stacking
-new_window pixel 3
-new_float normal 3
+new_window pixel 2
+new_float normal 2
 workspace_auto_back_and_forth yes
 force_focus_wrapping yes
-
-# assign and name workspaces:
-workspace 1:dev output DVI-0
-workspace 2:fma output DVI-0
-workspace 3:web output DVI-0
-workspace 4:art output DVI-0
-workspace 5:gme output DVI-0
-workspace 6:mus output DVI-0
-workspace 7:vid output DVI-0
-workspace 8:ext output DVI-0
-workspace 9:irc output DVI-0
-workspace 10:mes output DVI-0
-workspace 11:alt output HDMI-0
 
 # app binds:
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+d exec --no-startup-id rofi -show "run" -font "Share 10" -bw "3"
+bindsym $mod+x exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -p "launch:" -font "Share 10" -bw "3"'
 bindsym $mod+z exec --no-startup-id passmenu -p "copy:" -font "Share 10" -bw "3"
 bindsym Control+Mod1+Delete exec $TERMINAL -t htop -e htop
 bindsym $mod+Print exec --no-startup-id maim -d 3 ~/images/screenshots/$(date +%F-%T).png
 bindsym $mod+Mod1+Print exec --no-startup-id maim -s ~/images/screenshots/$(date +%F-%T).png
-bindsym --release $mod+F1 exec --no-startup-id xprop_notify
-bindsym $mod+F2 exec --no-startup-id pacman_checkupdates
+bindsym --release $mod+F1 exec --no-startup-id xprop-notify
+bindsym $mod+F2 exec --no-startup-id pacman-checkupdates
 bindsym XF86Explorer exec $TERMINAL -t ranger --name ranger -e ranger
-bindsym XF86AudioRaiseVolume exec --no-startup-id volume_increase
-bindsym XF86AudioLowerVolume exec --no-startup-id volume_decrease
+bindsym XF86AudioRaiseVolume exec --no-startup-id volume-increase
+bindsym XF86AudioLowerVolume exec --no-startup-id volume-decrease
 bindsym XF86AudioMute exec --no-startup-id ponymix toggle
 bindsym XF86Tools exec $TERMINAL -t pianobar --name pianobar -e pianobar
 bindsym XF86Calculator exec galculator
 bindsym $mod+Tab exec --no-startup-id rofi -show "window" -font "Share 10" -bw "3"
 
 # autostart apps:
-exec chromium
-exec wacom_set
+exec sleep 1; chromium
 exec i3-msg workspace 3:web
 
 # assign apps:
-assign [instance="crx_nckg.*" class="Chromium|Chromium-dev"] 10:mes
-assign [instance="ranger|spacefm"] 2:fma
-assign [class="Firefox|Chromium|Chromium-dev|Aurora|Dwb"] 3:web
+assign [instance="ranger|spacefm|thunar"] 2:fma
 assign [class="MyPaint|Krita|Gimp"] 4:art
 assign [class="Steam|Wine"] 5:gme
 assign [instance="audacious|pianobar"] 6:mus
-assign [class="Google-chrome.*"] 3:web
 assign [instance="weechat"] 9:irc
-assign [instance="gajim|profanity|skype"] 10:mes
+assign [instance="crx_nckg.*|crx_knip.*|gajim|profanity|skype"] 10:mes
+assign [class="Firefox|Chromium|Chromium-dev|Aurora|Dwb|Google-chrome.*"] 3:web
 
 # config apps:
 for_window [instance="Navigator" class="Firefox|Aurora"] border none
-for_window [instance="chromium|Chromium-dev|google-chrome.*" window_role="browser"] border none
-for_window [instance="Browser|Places|Abp" class="Firefox|Aurora"] floating enable
+for_window [instance="Chromium|Chromium-dev|google-chrome.*" window_role="browser"] border none
 for_window [instance="spacefm" window_role="task_dialog"] floating enable
 for_window [class="Chromium|Chromium-dev" window_role="pop-up"] floating enable
 for_window [class="Dwb"] border none
@@ -81,7 +63,8 @@ for_window [class="Pystopwatch"] floating enable
 for_window [class="Angband"] floating enable
 
 # border colors:        border: bg:     text:   indicator:
-client.focused          #493757 #453452 #FFFFFF #523445
+#client.focused         #493757 #453452 #FFFFFF #523445
+client.focused          #285577 #285577 #FFFFFF #285577
 client.focused_inactive #4F4E43 #49483E #BFBFBF #49483E
 client.unfocused        #000000 #000000 #888888 #000000
 client.urgent           #662B32 #58252B #F4BF75 #58252B
@@ -113,7 +96,6 @@ bindsym $mod+7 workspace 7:vid
 bindsym $mod+8 workspace 8:ext
 bindsym $mod+9 workspace 9:irc
 bindsym $mod+0 workspace 10:mes
-bindsym $mod+minus workspace 11:alt
 bindsym $mod+Shift+1 move container to workspace 1:dev
 bindsym $mod+Shift+2 move container to workspace 2:fma
 bindsym $mod+Shift+3 move container to workspace 3:web
@@ -123,8 +105,7 @@ bindsym $mod+Shift+6 move container to workspace 6:mus
 bindsym $mod+Shift+7 move container to workspace 7:vid
 bindsym $mod+Shift+8 move container to workspace 8:ext
 bindsym $mod+Shift+9 move container to workspace 9:irc
-bindsym $mod+Shift+10 move container to workspace 10:mes
-bindsym $mod+Shift+minus move container to workspace 11:alt
+bindsym $mod+Shift+0 move container to workspace 10:mes
 bindsym $mod+o move scratchpad
 bindsym $mod+grave scratchpad show
 bindsym button2 kill
@@ -172,8 +153,8 @@ mode "layout" {
 # border mode:
 bindsym $mod+b mode "border"
 mode "border" {
-    bindsym 1 border pixel 3; mode "default"
-    bindsym 2 border normal 3; mode "default"
+    bindsym 1 border pixel 2; mode "default"
+    bindsym 2 border normal 2; mode "default"
     bindsym 3 border none; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -192,11 +173,12 @@ mode "i3wm" {
 # i3bar options:
 bar {
     mode dock
-    output DVI-0
+    output HDMI-0
     modifier $mod
     position bottom
     font pango: Share Tech 10
-    status_command ~/.local/bin/i3bar_exec
+    status_command ~/.local/bin/i3bar-exec
+    separator_symbol ":"
     strip_workspace_numbers yes
 
     # bar colors:
@@ -204,7 +186,8 @@ bar {
         background #000000
 
         # workspace:       border: bg:     text:
-        focused_workspace  #453452 #453452 #CCCCCC
+#       focused_workspace  #453452 #453452 #CCCCCC
+        focused_workspace  #285577 #285577 #CCCCCC
         active_workspace   #1A1A1A #1A1A1A #696F89
         inactive_workspace #000000 #000000 #6B6B6B
         urgent_workspace   #662B32 #58252B #F4BF75
