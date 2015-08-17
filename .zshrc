@@ -17,7 +17,7 @@ setopt extendedglob
 setopt histignorealldups
 setopt incappendhistory
 
-autoload -U compinit colors
+autoload -U compinit colors history-search-end
 compinit
 colors
 
@@ -27,10 +27,12 @@ zstyle ":completion:*" matcher-list "m:{a-zA-Z}={A-Za-z}"
 # set prompt:
 PROMPT="%{$fg_no_bold[green]%}%n%{$reset_color%}@%{$fg_no_bold[magenta]%}%m%{$reset_color%}%1(j. [%j].) %{$fg_bold[cyan]%}%~%{$reset_color%} %# "
 
-# set keybinds:
+# set history search:
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
 bindkey "^R" history-incremental-search-backward
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
 
 # set aliases:
 alias c="clear"
