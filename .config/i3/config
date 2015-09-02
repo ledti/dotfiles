@@ -21,15 +21,15 @@ bindsym $mod+Mod1+Print exec --no-startup-id maim -s ~/images/screenshots/$(date
 bindsym --release $mod+F1 exec --no-startup-id xprop-notify
 bindsym $mod+F2 exec --no-startup-id pacman-checkupdates
 bindsym XF86Explorer exec $TERMINAL -t ranger --name ranger -e ranger
-bindsym XF86AudioRaiseVolume exec --no-startup-id volume-increase
-bindsym XF86AudioLowerVolume exec --no-startup-id volume-decrease
+bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix unmute; exec --no-startup-id ponymix --max-volume 150 increase 10
+bindsym XF86AudioLowerVolume exec --no-startup-id ponymix unmute; exec --no-startup-id ponymix --max-volume 150 decrease 10
 bindsym XF86AudioMute exec --no-startup-id ponymix toggle
 bindsym XF86Tools exec $TERMINAL -t pianobar --name pianobar -e pianobar
 bindsym XF86Calculator exec galculator
 bindsym $mod+Tab exec --no-startup-id rofi -show "window" -font "Share 10" -bw "3"
 
 # autostart apps:
-exec sleep 1; chromium
+exec chromium
 exec i3-msg workspace 3:web
 
 # assign apps:
@@ -61,6 +61,7 @@ for_window [class="Gajim"] floating enable
 for_window [class="t-engine"] floating enable
 for_window [class="Pystopwatch"] floating enable
 for_window [class="Angband"] floating enable
+for_window [class="Mojosetup"] floating enable
 
 # border colors:        border: bg:     text:   indicator:
 #client.focused         #493757 #453452 #FFFFFF #523445
@@ -172,12 +173,11 @@ mode "i3wm" {
 
 # i3bar options:
 bar {
-    mode dock
-    output HDMI-0
+    mode hide
     modifier $mod
     position bottom
     font pango: Share Tech 10
-    status_command ~/.local/bin/i3bar-exec
+    status_command i3status
     separator_symbol ":"
     strip_workspace_numbers yes
 

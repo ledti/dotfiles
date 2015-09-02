@@ -2,7 +2,7 @@
 
 # set path:
 typeset -U path
-path=($HOME/.local/bin $HOME/.gem/ruby/2.0.0/bin $path)
+path=($HOME/.local/bin $HOME/.gem/ruby/2.2.0/bin $path)
 
 # set local variables:
 export BROWSER="chromium"
@@ -13,5 +13,4 @@ export SUDO_EDITOR="$EDITOR"
 export TERMINAL="termite"
 export TERMCMD="$TERMINAL"
 export QT_STYLE_OVERRIDE="gtk"
-export DESKTOP_SESSION="gnome"
 export _JAVA_OPTIONS="-Dswing.aatext=true"

@@ -15,6 +15,7 @@ setopt completealiases
 setopt correct
 setopt extendedglob
 setopt histignorealldups
+setopt histignorespace
 setopt incappendhistory
 
 autoload -U compinit colors history-search-end
@@ -24,15 +25,18 @@ colors
 zstyle ":completion:*" menu select
 zstyle ":completion:*" matcher-list "m:{a-zA-Z}={A-Za-z}"
 
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+
 # set prompt:
 PROMPT="%{$fg_no_bold[green]%}%n%{$reset_color%}@%{$fg_no_bold[magenta]%}%m%{$reset_color%}%1(j. [%j].) %{$fg_bold[cyan]%}%~%{$reset_color%} %# "
 
-# set history search:
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
+# set bindings:
 bindkey "^R" history-incremental-search-backward
 bindkey "^[[A" history-beginning-search-backward-end
 bindkey "^[[B" history-beginning-search-forward-end
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 
 # set aliases:
 alias c="clear"
