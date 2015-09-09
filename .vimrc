@@ -31,4 +31,4 @@ highlight nonText ctermbg=NONE
 syntax on
 filetype indent plugin on
 vnoremap <C-c> "+y
-nmap <F5> :%sort u<RETURN>
+nmap <F5> :%sort ui<RETURN>
