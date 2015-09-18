@@ -13,7 +13,7 @@ force_focus_wrapping yes
 # app binds:
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+d exec --no-startup-id rofi -show "run" -font "Share 10" -bw "3"
-bindsym $mod+x exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -p "launch:" -font "Share 10" -bw "3"'
+bindsym $mod+x exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -p "launch:" -font "Share 10" -bw "3"'
 bindsym $mod+z exec --no-startup-id passmenu -p "copy:" -font "Share 10" -bw "3"
 bindsym Control+Mod1+Delete exec $TERMINAL -t htop -e htop
 bindsym $mod+Print exec --no-startup-id maim -d 3 ~/images/screenshots/$(date +%F-%T).png
@@ -135,8 +135,8 @@ mode "resize" {
 bindsym $mod+p mode "power"
 mode "power" {
     bindsym 1 exec systemctl suspend; mode "default"
-    bindsym 2 exec systemctl reboot; mode "default"
-    bindsym 3 exec systemctl poweroff; mode "default"
+    bindsym 2 exec exec systemctl reboot; mode "default"
+    bindsym 3 exec exec systemctl poweroff; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
