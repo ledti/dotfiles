@@ -111,6 +111,7 @@ bindsym $mod+o move scratchpad
 bindsym $mod+grave scratchpad show
 bindsym button2 kill
 bindsym button3 floating toggle
+bindsym $mod+t sticky toggle
 
 # resize mode:
 bindsym $mod+r mode "resize"
