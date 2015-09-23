@@ -1,4 +1,0 @@
-#!/bin/bash
-
-ponymix unmute
-ponymix --max-volume 150 decrease 10

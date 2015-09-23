@@ -5,7 +5,7 @@
 # requires: bash, coreutils, grep, and tarsnap.
 
 # https://gist.github.com/ledti/b8bc6bd0200b7c91ea58
-# last modified: 2015/02/17
+# last modified: 2015/06/13
 
 # * monthly backups on the first of the month (if enabled).
 #    - if day of month > 1 and ≤ 21 and no current monthly backup, creates backup.
@@ -21,7 +21,7 @@
 
 # base tarsnap command:
 # e.g. "tarsnap".
-TARSNAP="tarsnap --configfile $HOME/.config/tarsnap/tarsnaprc"
+TARSNAP="tarsnap --quiet --configfile $HOME/.config/tarsnap/tarsnaprc"
 
 # all stored tarsnap archives:
 # * don't change unless you know what you're doing.
@@ -133,6 +133,8 @@ MONTHLY_CHECK() {
     if [[ $KM -ge 1 && $MCHK -lt 1 && $(date +%-d) -gt 1 && $(date +%-d) -le 21 ]]; then
         # create a monthly backup and exit:
         MONTHLY_BACKUP
+        PRESERVE
+        PRUNE
         exit
     fi
 }
@@ -145,6 +147,8 @@ WEEKLY_CHECK() {
     if [[ $KW -ge 1 && $WCHK -lt 1 && $(date +%u) -gt 1 && $(date +%u) -le 4 ]]; then
         # create a weekly backup and exit:
         WEEKLY_BACKUP
+        PRESERVE
+        PRUNE
         exit
     fi
 }

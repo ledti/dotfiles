@@ -1,0 +1,8 @@
+#!/bin/bash
+
+folder="/mnt/storage/drive"
+
+if [[ -e $folder ]] && ! pidof "drive" > /dev/null; then
+    cd $folder
+    true | drive push
+fi
