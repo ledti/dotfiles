@@ -17,7 +17,7 @@ bindsym $mod+x exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -p 
 bindsym $mod+z exec --no-startup-id passmenu -p "copy:" -font "Share 10" -bw "3"
 bindsym Control+Mod1+Delete exec $TERMINAL -t htop -e htop
 bindsym $mod+Print exec --no-startup-id maim -d 3 ~/images/screenshots/$(date +%F-%T).png
-bindsym $mod+Mod1+Print exec --no-startup-id maim -s ~/images/screenshots/$(date +%F-%T).png
+bindsym $mod+Shift+Print exec --no-startup-id maim -s ~/images/screenshots/$(date +%F-%T).png
 bindsym --release $mod+F1 exec --no-startup-id xprop-notify
 bindsym $mod+F2 exec --no-startup-id pacman-checkupdates
 bindsym XF86Explorer exec $TERMINAL -t ranger --name ranger -e ranger
@@ -179,7 +179,7 @@ bar {
     position bottom
     font pango: Share Tech 10
     status_command i3status
-    separator_symbol ":"
+    separator_symbol "."
     strip_workspace_numbers yes
 
     # bar colors:
