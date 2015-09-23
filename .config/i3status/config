@@ -1,0 +1,30 @@
+general {
+    output_format = i3bar
+    colors = true
+    interval = 5
+}
+
+order += "volume master"
+order += "cpu_usage"
+order += "tztime local"
+order += "time"
+
+volume master {
+    format = "%volume"
+    format_muted = "M"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
+
+cpu_usage {
+    format = "%usage"
+}
+
+tztime local {
+    format = "%F-%V-%u"
+}
+
+time {
+    format = "%r"
+}
