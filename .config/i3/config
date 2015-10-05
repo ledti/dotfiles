@@ -10,6 +10,8 @@ new_float normal 2
 workspace_auto_back_and_forth yes
 force_focus_wrapping yes
 
+bindsym Control+Shift+u Alt_r
+
 # app binds:
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+d exec --no-startup-id rofi -show "run" -font "Share 10" -bw "3"
@@ -179,7 +181,7 @@ bar {
     position bottom
     font pango: Share Tech 10
     status_command i3status
-    separator_symbol "."
+    separator_symbol ":"
     strip_workspace_numbers yes
 
     # bar colors:
