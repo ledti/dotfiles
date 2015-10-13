@@ -70,4 +70,4 @@ alias spi="sudo pacman -S"
 alias spr="sudo pacman -Rsn"
 alias spu="sudo pacman -Syu"
 alias syschk="systemctl --failed && journalctl -p 0..3 -xn"
-alias tarsnap="tarsnap --configfile $HOME/.config/tarsnap/tarsnaprc"a
+alias tarsnap="tarsnap --configfile $HOME/.config/tarsnap/tarsnaprc"
