@@ -27,9 +27,8 @@ set t_Co=256
 set background=dark
 colorscheme gruvbox
 highlight Normal ctermbg=NONE
-highlight nonText ctermbg=NONE
 syntax on
 filetype indent plugin on
 vnoremap <C-c> "+y
-nmap <F5> :6,$sort ui<RETURN>
+nmap <F5> :3,$sort ui<RETURN>
 nmap <F6> :%s/\s\+$//<RETURN>

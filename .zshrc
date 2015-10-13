@@ -55,6 +55,7 @@ alias lf="lsblk -f"
 alias ln="ln -i"
 alias ls="ls -1 --color=auto"
 alias mv="mv -i"
+alias myip="curl icanhazip.com"
 alias op="vim"
 alias p="pacman" && compdef p=pacman
 alias pb="pbget --dir $HOME/builds/arch"
@@ -69,4 +70,4 @@ alias spi="sudo pacman -S"
 alias spr="sudo pacman -Rsn"
 alias spu="sudo pacman -Syu"
 alias syschk="systemctl --failed && journalctl -p 0..3 -xn"
-alias tarsnap="tarsnap --configfile $HOME/.config/tarsnap/tarsnaprc"
+alias tarsnap="tarsnap --configfile $HOME/.config/tarsnap/tarsnaprc"a
