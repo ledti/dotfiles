@@ -39,13 +39,13 @@ assign [class="Steam|Wine"] 5:gme
 assign [instance="audacious|pianobar"] 6:mus
 assign [instance="weechat"] 9:irc
 assign [instance="crx_nckg.*|crx_knip.*|gajim|profanity|skype"] 10:mes
-assign [class="Chromium" window_role="browser"] 3:web
+assign [class="chromium" window_role="browser"] 3:web
 
 # config apps:
 for_window [instance="Navigator" class="Firefox|Aurora"] border none
-for_window [instance="Chromium|Chromium-dev|google-chrome.*" window_role="browser"] border none
 for_window [instance="spacefm" window_role="task_dialog"] floating enable
-for_window [class="Chromium|Chromium-dev" window_role="pop-up"] floating enable
+for_window [class="chromium" window_role="browser"] border none
+for_window [class="chromium" window_role="pop-up"] floating enable
 for_window [class="Dwb"] border none
 for_window [class="Gnome-screenshot"] floating enable
 for_window [class="net-minecraft-bootstrap-Bootstrap"] floating enable
