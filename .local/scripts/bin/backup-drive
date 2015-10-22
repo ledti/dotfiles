@@ -4,5 +4,7 @@ folder="/mnt/storage/drive"
 
 if [[ -e $folder ]] && ! pidof "drive" > /dev/null; then
     cd $folder
-    true | drive push
+    drive push --no-prompt --ignore-conflict --ignore-name-clashes
+else
+    echo "error: drive is currently running (pid: $(pidof drive)), aborting..."
 fi
