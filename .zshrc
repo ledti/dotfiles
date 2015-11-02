@@ -56,7 +56,7 @@ alias ln="ln -i"
 alias ls="ls -1 --color=auto"
 alias mv="mv -i"
 alias myip="curl icanhazip.com"
-alias op="vim"
+alias op="$EDITOR"
 alias p="pacman" && compdef p=pacman
 alias pb="pbget --dir $HOME/builds/arch"
 alias perm="stat -c %a %n"

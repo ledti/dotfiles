@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.local/share/plugged')
 
 Plug 'Yggdroot/indentLine'
 Plug 'bling/vim-airline'
@@ -20,10 +20,8 @@ set smarttab
 set hlsearch
 set ignorecase
 set smartcase
-set nocompatible
 set number
 set pastetoggle=<F2>
-set t_Co=256
 set background=dark
 let g:airline_powerline_fonts = 1
 colorscheme gruvbox
