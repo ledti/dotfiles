@@ -1,4 +1,4 @@
-call plug#begin('~/.local/share/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'Yggdroot/indentLine'
 Plug 'bling/vim-airline'
