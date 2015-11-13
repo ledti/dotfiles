@@ -178,7 +178,7 @@ bar {
     modifier $mod
     position bottom
     font pango: Share Tech 10
-    status_command i3status
+    status_command i3bar-exec
     separator_symbol ":"
     strip_workspace_numbers yes
 

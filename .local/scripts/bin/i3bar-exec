@@ -4,4 +4,4 @@ echo '{"version":1}'
 echo '['
 echo '[],'
 
-exec conky -p 2 -c $HOME/.local/scripts/conkyrc_i3_json
+exec conky -p 1 -c $HOME/.local/scripts/conkyrc_i3_json_lua
