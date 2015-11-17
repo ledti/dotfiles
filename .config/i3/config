@@ -27,6 +27,8 @@ bindsym XF86AudioMute exec --no-startup-id ponymix toggle
 bindsym XF86Tools exec $TERMINAL -t pianobar --name pianobar -e pianobar
 bindsym XF86Calculator exec galculator
 bindsym $mod+Tab exec --no-startup-id rofi -show "window" -font "Share 10" -bw "3"
+bindsym --whole-window $mod+Button4 exec "compton-trans -c -5"
+bindsym --whole-window $mod+Button5 exec "compton-trans -c +5"
 
 # autostart apps:
 exec chromium

@@ -59,7 +59,7 @@ alias myip="curl icanhazip.com"
 alias op="$EDITOR"
 alias p="pacman" && compdef p=pacman
 alias pb="pbget --dir $HOME/builds/arch"
-alias perm="stat -c %a %n"
+alias perm="stat -c '%a %n'"
 alias rm="rm -I"
 alias root="sudo -Es"
 alias service="sudo systemctl" && compdef service=systemctl
