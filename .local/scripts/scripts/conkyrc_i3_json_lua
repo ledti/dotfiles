@@ -26,7 +26,7 @@ conky.text = [[
 {"full_text":"${if_existing /usr/bin/ponymix}"},\
 {"full_text":"VO","color":"\#363636","separator":false,"separator_block_width":6},\
 {"full_text":"${if_match "${exec ponymix is-muted; echo $?}"=="1"}"},\
-{"full_text":"${exec ponymix get-volume}","color":"\#AFAF00","separator":false,"separator_block_width":0},\
+{"full_text":"${execi 2 ponymix get-volume}","color":"\#AFAF00","separator":false,"separator_block_width":0},\
 {"full_text":"%","color":"\#EEEEEE","separator":false,"separator_block_width":6},\
 {"full_text":"${else}"},\
 {"full_text":"MUTE","color":"\#CC4141","separator":false,"separator_block_width":6},\
