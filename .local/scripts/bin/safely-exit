@@ -1,0 +1,13 @@
+#!/bin/bash
+
+killall -q -w -s TERM audacious
+killall -q -w -s TERM chromium
+killall -q -w -s KILL conky
+
+if [[ $1 == "-r" ]]; then
+    systemctl reboot
+else
+    systemctl poweroff
+fi
+
+exit 0

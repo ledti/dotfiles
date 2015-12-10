@@ -138,8 +138,8 @@ mode "resize" {
 bindsym $mod+p mode "power"
 mode "power" {
     bindsym 1 exec systemctl suspend; mode "default"
-    bindsym 2 exec systemctl reboot; mode "default"
-    bindsym 3 exec systemctl poweroff; mode "default"
+    bindsym 2 exec safely-exit -r; mode "default"
+    bindsym 3 exec safely-exit; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
