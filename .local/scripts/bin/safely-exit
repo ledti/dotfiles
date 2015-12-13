@@ -2,6 +2,7 @@
 
 killall -q -w -s TERM audacious
 killall -q -w -s TERM chromium
+killall -q -w -s TERM qbittorrent
 killall -q -w -s KILL conky
 
 if [[ $1 == "-r" ]]; then
