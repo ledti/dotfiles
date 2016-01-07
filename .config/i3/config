@@ -1,6 +1,6 @@
 # i3 options:
 set $mod Mod4
-font pango: Share 10
+font pango: Share Italic 10
 floating_modifier $mod
 default_orientation vertical
 hide_edge_borders both
@@ -180,7 +180,7 @@ bar {
     modifier $mod
     position bottom
     font pango: Share Tech 10
-    status_command i3bar-exec
+    status_command i3status
     separator_symbol ":"
     strip_workspace_numbers yes
 
