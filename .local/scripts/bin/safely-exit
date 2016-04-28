@@ -1,14 +1,24 @@
 #!/bin/bash
 
+# safely-exit: safely exit known programs, with optional reboot/poweroff flags.
+
+# safely close (and wait) for these programs to exit:
 killall -q -w -s TERM audacious
 killall -q -w -s TERM chromium
 killall -q -w -s TERM qbittorrent
+killall -q -w -s TERM weechat
+killall -q -w -s TERM termite
+
+# kill (and wait) for these programs to exit:
 killall -q -w -s KILL conky
 
+# reboot if $1 is '-r':
 if [[ $1 == "-r" ]]; then
     systemctl reboot
-else
+# poweroff if $1 is '-p':
+elif [[ $1 == "-p" ]]; then
     systemctl poweroff
+elif [[ $1 == "-e" ]]; then
+# exit i3 if $1 is '-e':
+    i3-msg exit
 fi
-
-exit 0

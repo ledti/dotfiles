@@ -5,7 +5,7 @@
 # requires: bash, coreutils, grep, and tarsnap.
 
 # https://gist.github.com/ledti/b8bc6bd0200b7c91ea58
-# last modified: 2015/06/13
+# last modified: 2016/02/03
 
 # * monthly backups on the first of the month (if enabled).
 #    - if day of month > 1 and ≤ 21 and no current monthly backup, creates backup.
@@ -27,8 +27,8 @@ TARSNAP="tarsnap --quiet --configfile $HOME/.config/tarsnap/tarsnaprc"
 # * don't change unless you know what you're doing.
 ARCHIVES=$($TARSNAP --list-archives)
 
-# file containing list of filenames to backup to tarsnap:
-# i.e. 'tarsnap -c -f archivename -T $LIST', see 'man tarsnap'
+# file containing a list of filenames to backup to tarsnap:
+# * use the full path to each file, and separate them with a space or newline.
 LIST="$HOME/.config/tarsnap/synclist"
 
 # prefix for all backups:
@@ -53,6 +53,20 @@ KM="2"
 VERBOSE="true"
 
 # ---
+
+# create file array and sanitize it for tarsnap:
+SYNCLIST=($(<$LIST))
+for file in ${!SYNCLIST[@]}; do
+    # if a file in the array doesn't exist, then:
+    if [[ ! -e ${SYNCLIST[$file]} ]]; then
+        # print a warning if $VERBOSE is true:
+        if [[ $VERBOSE == "true" ]]; then
+            echo "Ignoring file that does not exist: ${SYNCLIST[$file]}"
+        fi
+        # remove non-existent file from the array:
+        unset -v "SYNCLIST[$file]"
+    fi
+done
 
 # preserves a set number of backups:
 PRESERVE() {
@@ -84,7 +98,7 @@ DAILY_BACKUP() {
         echo "Creating backup: $PREFIX-$TYPE-$(date +%F-%V-%u)"
     fi
     # create daily backup:
-    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%V-%u) -T $LIST
+    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%V-%u) ${SYNCLIST[@]}
 }
 
 # creates a weekly backup:
@@ -96,7 +110,7 @@ WEEKLY_BACKUP() {
         echo "Creating backup: $PREFIX-$TYPE-$(date +%F-%V-%u)"
     fi
     # create weekly backup:
-    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%V-%u) -T $LIST
+    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%V-%u) ${SYNCLIST[@]}
 }
 
 # creates a monthly backup:
@@ -108,7 +122,7 @@ MONTHLY_BACKUP() {
         echo "Creating backup: $PREFIX-$TYPE-$(date +%F-%V-%u)"
     fi
     # create monthly backup:
-    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%V-%u) -T $LIST
+    $TARSNAP -c -f $PREFIX-$TYPE-$(date +%F-%V-%u) ${SYNCLIST[@]}
 }
 
 # determines if there was a previous backup created today:

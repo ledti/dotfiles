@@ -1,6 +1,6 @@
 # i3 options:
 set $mod Mod4
-font pango: Share Italic 10
+font pango: Share 10
 floating_modifier $mod
 default_orientation vertical
 hide_edge_borders both
@@ -17,7 +17,7 @@ bindsym $mod+x exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -p 
 bindsym $mod+z exec --no-startup-id passmenu -p "copy:" -font "Share 10" -bw "3"
 bindsym Control+Mod1+Delete exec $TERMINAL -t htop -e htop
 bindsym $mod+Print exec --no-startup-id maim -d 3 ~/images/screenshots/$(date +%F-%T).png
-bindsym $mod+Shift+Print exec --no-startup-id maim -s ~/images/screenshots/$(date +%F-%T).png
+bindsym $mod+Shift+Print exec --no-startup-id maim -d 3 -s ~/images/screenshots/$(date +%F-%T).png
 bindsym --release $mod+F1 exec --no-startup-id xprop-notify
 bindsym $mod+F2 exec --no-startup-id pacman-checkupdates
 bindsym XF86Explorer exec $TERMINAL -t ranger --name ranger -e ranger
@@ -25,14 +25,18 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id ponymix unmute; exec --no-star
 bindsym XF86AudioLowerVolume exec --no-startup-id ponymix unmute; exec --no-startup-id ponymix --max-volume 150 decrease 10
 bindsym XF86AudioMute exec --no-startup-id ponymix toggle
 bindsym XF86Tools exec $TERMINAL -t pianobar --name pianobar -e pianobar
-bindsym XF86Calculator exec galculator
+bindsym XF86Calculator exec speedcrunch
 bindsym $mod+Tab exec --no-startup-id rofi -show "window" -font "Share 10" -bw "3"
 bindsym --whole-window $mod+Button4 exec "compton-trans -c -5"
 bindsym --whole-window $mod+Button5 exec "compton-trans -c +5"
 
 # autostart apps:
 exec chromium
-exec i3-msg workspace 3:web
+exec audacious
+exec $TERMINAL -t ranger --name ranger -e ranger
+exec $TERMINAL --name weechat -e "weechat -r '/connect avedust'"
+exec autoaway
+exec sleep 1; i3-msg workspace 9:irc; i3-msg workspace 6:mus; i3-msg workspace 2:fma; i3-msg workspace 3:web
 
 # assign apps:
 assign [instance="ranger|spacefm|thunar"] 2:fma
@@ -40,12 +44,13 @@ assign [class="MyPaint|Krita|Gimp"] 4:art
 assign [class="Steam|Wine"] 5:gme
 assign [instance="audacious|pianobar"] 6:mus
 assign [instance="weechat"] 9:irc
-assign [instance="crx_nckg.*|crx_knip.*|gajim|profanity|skype"] 10:mes
+assign [instance="crx_nckg.*|crx_knip.*|gajim|profanity|skype|discord|cryptocat|ricochet"] 10:mes
 assign [class="chromium" window_role="browser"] 3:web
 
 # config apps:
 for_window [instance="Navigator" class="Firefox|Aurora"] border none
 for_window [instance="spacefm" window_role="task_dialog"] floating enable
+for_window [instance="cryptocat|ricochet"] floating enable
 for_window [class="chromium" window_role="browser"] border none
 for_window [class="chromium" window_role="pop-up"] floating enable
 for_window [class="Dwb"] border none
@@ -139,7 +144,7 @@ bindsym $mod+p mode "power"
 mode "power" {
     bindsym 1 exec systemctl suspend; mode "default"
     bindsym 2 exec safely-exit -r; mode "default"
-    bindsym 3 exec safely-exit; mode "default"
+    bindsym 3 exec safely-exit -p; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -169,7 +174,7 @@ bindsym $mod+i mode "i3wm"
 mode "i3wm" {
     bindsym 1 reload; mode "default"
     bindsym 2 restart; mode "default"
-    bindsym 3 exit; mode "default"
+    bindsym 3 exec safely-exit -e; mode "default"
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
